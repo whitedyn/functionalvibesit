@@ -1,0 +1,230 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        Our team - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/team/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Our team - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/team1.jpg" />
+    {#<meta property="og:image" content="{{ service.photo.url }}" />#}
+    <meta property="og:image:alt" content="Our team - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center para-desktop"
+                 style='background-image: url("{% static 'images/team133.jpg'%}");height:600px'>
+                 {#style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url({% static 'images/team1.jpg'%}); width: 100%; height: 700px;padding-top:50px;margin-top: -15px;">#}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-2">
+                        {#<h1 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >#}
+                        {#    <b>Meet our team</b>#}
+                        {#</h1>#}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{#        <section class="module" id="id_team">#}
+        <section class="module p-b-0" id="id_team" style="padding-top:30px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 m-auto text-center">
+                        {#<h1>Meet our team</h1>#}
+                        <h1>“We are meant to make the difference in your life.”</h1>
+                        <p class="lead" style="font-size:18px">
+                            Our technical skills and scientific method are essential ingredients for success, but we know they're not enough. Everybody is different and every body is different. We like listening to you and putting ourselves in your shoes. That’s how we can offer you the most customised experience you've ever had.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="space" data-MY="40px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row row-portfolio" data-columns="4">
+                    <div class="grid-sizer"></div>
+                    {% for team_member in team_members %}
+                        <div class="portfolio-item branding">
+                            <div class="portfolio-item-wrapper">
+                                <div class="portfolio-item-img">
+{#                                    <img src="{% static 'images/team/1.jpg' %}" alt="">#}
+                                    {% if team_member.photo %}
+                                        {#<a href="{% url 'team_member' slug=team_member.slug %}">#}
+                                            <img src="{{ team_member.photo.url }}" alt="">
+                                        {#</a>#}
+                                    {% else %}
+                                        <img src="{% static 'images/team/1.jpg' %}" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="portfolio-item-caption">
+                                    <h3 class="portfolio-item-title">
+                                        {#<a href="{% url 'team_member' slug=team_member.slug %}">#}
+                                            {{ team_member.name }}
+                                        {#</a>#}
+                                        <br/>
+                                        {% if team_member.position %}
+                                            <span class="portfolio-item-subtitle serif">
+                                                <b>{{ team_member.position }}</b>
+                                            </span>
+                                        {% endif %}
+                                        <hr>
+                                        {% for lan in team_member.language.all %}
+                                            <img src="/static/images/flags/{{ lan.abbreviation }}.png"
+                                                 alt="{{ lan }}" title="Speaks {{ lan }}">
+                                        {% endfor %}
+                                    </h3>
+
+                                    {#{% if team_member.description %}#}
+                                    {#    <span class="portfolio-item-subtitle arial">#}
+                                    {#        {{ team_member.description|safe|slice:":60" }}#}
+                                    {#    </span>#}
+                                    {#{% endif %}#}
+                                    <br>
+
+                                    {#<a href="{% url 'team_member' slug=team_member.slug %}"#}
+                                       {#class="btn btn-square btn-outline-secondary m-b-30">Find out more</a>#}
+
+                                    <a href="{% url 'team_member' slug=team_member.slug %}"
+                                       class="btn btn-square btn-outline-secondary m-b-30">
+                                        <h6 onMouseOver="this.style.color='#ffffff'"
+                                            onMouseOut="this.style.color='#333333'">Find out more</h6>
+                                    </a>
+
+                                    {#<button class="btn btn-circle btn-outline-brand m-b-30"#}
+                                    {#        type="button"#}
+                                    {#        data-toggle="modal"#}
+                                    {#        data-target="#modal-{{ team_member.slug }}">#}
+                                    {#        Book {{ team_member.name }}#}
+                                    {#</button>#}
+                                </div>
+{#                                <a class="portfolio-item-link" href="#"></a>#}
+                            </div>
+                        </div>
+
+                        <div class="modal fade"
+                             id="modal-{{ team_member.slug }}"
+                             tabindex="-1"
+                             role="dialog"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">
+                                            Send book request for {{ team_member.name }}
+                                        </h5>
+                                        <button class="close"
+                                                type="button"
+                                                data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="name"
+                                                   id="id_name"
+                                                   placeholder="Your full name*"
+                                                   required="">
+                                            <p class="help-block text-danger">*This field is required</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="phone"
+                                                   id="id_phone"
+                                                   placeholder="Your phone number*"
+                                                   required="">
+                                            <p class="help-block text-danger">*This field is required</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control"
+                                                   type="email"
+                                                   name="email"
+                                                   placeholder="Your email address">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control"
+                                                   type="datetime-local"
+                                                   name="datetime"
+                                                   placeholder="Date and time*">
+                                            <p class="help-block text-danger">*This field is required</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="comments"
+                                                   id="id_comments"
+                                                   placeholder="Your comments"
+                                                   required="">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" type="button">
+                                            Send book request
+                                        </button>
+                                        <button class="btn btn-secondary"
+                                                type="button"
+                                                data-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="space" data-MY="40px"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <a href="/contact">
+            <section class="module-cover text-center para-desktop"
+                     style='background-image: url("{% static 'images/team133.jpg'%}");'>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="over-title-center" style="padding-top:100px">
+                            <h3 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >
+                                <b>Get in touch</b>
+                            </h3>
+                            {#<h3 style="color: #333333">#}
+                            {#    Get in touch#}
+                            {#</h3>#}
+    {#                        <ol class="breadcrumb justify-content-center">#}
+    {#                            <li class="breadcrumb-item"><a href="#">Home</a></li>#}
+    {#                            <li class="breadcrumb-item"><a href="#">Blog</a></li>#}
+    {#                            <li class="breadcrumb-item active">Single Post</li>#}
+    {#                        </ol>#}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </a>
+    </div>
+{% endblock content %}

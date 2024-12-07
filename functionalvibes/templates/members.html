@@ -1,0 +1,99 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        Members - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/members/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Members - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/members-top.jpg" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="Members - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center para-desktop"
+                 style='background-image: url("{% static 'images/members-top.jpg' %}");'>{#parallax#}
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center" style="padding-top:400px">
+                        <h3 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >
+                            <b>Members</b>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {#{% if user.is_authenticated or user.is_staff %}#}
+        <section class="module">
+            <div class="container">
+{#                <div class="row">#}
+{#                    <div class="col-md-6 m-auto text-center">#}
+{#                        <h1>Latest articles.</h1>#}
+{#                        <p class="lead">See how your users experience your website in realtime or view trends to see any changes in performance over time.</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-12">#}
+{#                        <div class="space" data-MY="60px"></div>#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="row row-post-masonry">
+                    {% for video in videos %}
+                        <div class="col-md-6 post-item">
+                            <!-- Post-->
+                            <article class="post">
+                                <div class="post-preview">
+                                    {% if video.vimeo %}
+                                        <iframe
+                                                src="//player.vimeo.com/video/{{ video.vimeo|slice:"18:255" }}?title=0&amp;amp;amp;byline=0&amp;amp;amp;portrait=0&amp;amp;amp;color=ffffff"
+                                                width="500"
+                                                height="281"
+                                                frameborder="0" webkitallowfullscreen mozallowfullscreen
+                                                allowfullscreen></iframe></p>
+                                    {% elif video.youtube %}
+                                        <iframe
+                                                width="500"
+                                                height="281"
+                                                frameborder="0"
+                                                src="//www.youtube.com/embed/{{ video.youtube|slice:"17:255" }}"
+                                                allowfullscreen></iframe>
+                                    {% endif %}
+                                </div>
+                                <div class="post-wrapper">
+                                    <div class="post-header">
+                                        <h2 class="post-title">
+                                            {{ video.title }}</h2>
+    {#                                        <a href="#">Title</a>#}
+                                    </div>
+                                    {% if video.description %}
+                                        <div class="post-content">
+                                            <p>{{ video.description|safe }}</p>
+        {#                                    <p><a href="#">Read more</a></p>#}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </article>
+                            <!-- Post end-->
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {#{% endif %}#}
+
+    </div>
+{% endblock content %}

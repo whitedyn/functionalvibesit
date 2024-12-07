@@ -1,0 +1,132 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+{% block content %}
+<head>
+    <title>
+        {{ video.title }} - Functional Vibes
+    </title>
+    {#<script src="https://www.google.com/recaptcha/api.js" async defer></script>#}
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="{% url 'vibes_video_detail' pk=video.pk %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Get in touch - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://vumbnail.com/462842109.jpg" />
+    <meta property="og:image:alt" content="Functional Vibes - The movement experience" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module" style="padding-top:100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb justify-content-left">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/vibes-in-action">Videos</a></li>
+                            <li class="breadcrumb-item active">{{ video.title }}</li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="shop-single-item-photos" style="padding-left: 0px!important;">
+
+                            <a class="btn btn-square btn-outline-secondary m-b-30" href="/vibes-in-action/">
+                                <i class="fa fa-arrow-up"></i> Return to videos
+                            </a>
+
+                            {% if next_video %}
+                            <a class="btn btn-square btn-outline-secondary m-b-30 float-right"
+                               style="margin-left:5px"
+                               href="{% url 'vibes_video_detail' pk=next_video.id %}"
+                               title="Next video">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            {% endif %}
+
+                            {% if pre_video %}
+                                <a class="btn btn-square btn-outline-secondary m-b-30 float-right"
+                                   href="{% url 'vibes_video_detail' pk=pre_video.id %}"
+                                   title="Previous video">
+                                    <i class="fa fa-arrow-left"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if video.vimeo %}
+                                <iframe
+                                        src="//player.vimeo.com/video/{{ video.vimeo|slice:'18:255' }}?title=0&amp;amp;amp;byline=0&amp;amp;amp;portrait=0&amp;amp;amp;color=ffffff"
+                                        width="600px"
+                                        height="450px"
+                                        frameborder="0"
+                                        webkitallowfullscreen
+                                        mozallowfullscreen
+                                        allowfullscreen>
+                                </iframe>
+                            {% elif video.youtube %}
+                                <iframe
+                                        width="600px"
+                                        height="450px"
+                                        frameborder="0"
+                                        src="//www.youtube.com/embed/{{ video.youtube|slice:'17:255' }}"
+                                        allowfullscreen>
+                                </iframe>
+                            {% endif %}
+
+                            {% comment %}
+                            <hr class="m-t-30 m-b-30">
+                                <div class="info-list">
+                                    <li>
+                                        <span class="info-list-title">{{ video.title }}</span>
+                                    </li>
+                                </div>
+
+{#                            </a>#}
+{#                            <ul class="shop-single-item-gallery">#}
+{#                                <li><a class="shop-single-item-popup" #}
+{#                                       href="assets/images/shop/1.jpg">#}
+{#                                    <img src="assets/images/shop/1.jpg" alt="">#}
+{#                                </a>#}
+{#                                </li>#}
+{#                                <li><a class="shop-single-item-popup" #}
+{#                                       href="assets/images/shop/2.jpg">#}
+{#                                    <img src="assets/images/shop/2.jpg" alt="">#}
+{#                                </a>#}
+{#                                </li>#}
+{#                                <li><a class="shop-single-item-popup" #}
+{#                                       href="assets/images/shop/3.jpg">#}
+{#                                    <img src="assets/images/shop/3.jpg" alt="">#}
+{#                                </a>#}
+{#                                </li>#}
+{#                            </ul>#}
+                            {% endcomment %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="shop-single-item">
+                            <h3 class="shop-single-item-title">
+                                {{ video.title }}
+                            </h3>
+
+                            {#<div class="shop-single-item-rating"></div>#}
+                            {#<h2 class="shop-single-item-price">$100.00</h2>#}
+                            {% if video.description %}
+                                <div class="shop-single-item-description">
+                                    <p>{{ video.description|safe }}</p>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% post_to_facebook object_or_url "F" %}
+{% endblock content %}

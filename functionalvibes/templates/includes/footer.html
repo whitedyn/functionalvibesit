@@ -1,0 +1,258 @@
+{% load cms_tags menu_tags sekizai_tags static %}
+
+<footer class="footer">
+    <div class="footer-widgets">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <!-- Text widget-->
+                    <aside class="widget widget-text" style="margin-bottom: 10px;">
+                        <div class="widget-title">
+                            <span class="footer-header">Functional vibes</span>
+                        </div>
+                        <div class="textwidget" STYLE="color: white">
+                            <p>
+                                <i class="fa fa-building"></i>
+                                Rue de la loi 67, 1000 - Brussels<br>
+                                <i class="fa fa-phone"></i>
+                                +32 491 28 56 52<br>
+                                <i class="fa fa-envelope"></i>
+                                info@functionalvibes.com<br>
+                            </br>
+                            <ul class="social-icons">
+                                <li>
+                                    <a href="https://www.facebook.com/functionalvibes/"
+{#                                       class="btn btn-brand btn-sm"#}
+                                       target="_blank">
+                                        <i class="social-ic fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/functional_vibes/"
+{#                                       class="btn btn-secondary btn-sm"#}
+                                       target="_blank">
+                                        <i class="social-ic fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/functional-vibes/"
+{#                                       class="btn btn-info btn-sm"#}
+                                       target="_blank">
+                                        <i class="social-ic fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <!-- Recent entries widget-->
+                    <aside class="widget widget-recent-entries" style="margin-bottom: 10px; color:white;">
+                        <div class="widget-title">
+                            <span class="footer-header">Available by appointment</span>
+                        </div>
+{#                        <table>#}
+{#                            <tr>#}
+{#                                <td>Monday - Friday</td>#}
+{#                                <td>#}
+{#                                    <span style="color:#ffffff;padding-left: 50px;">#}
+{#                                        07 AM - 10 PM#}
+{#                                    </span>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>Saturday</td>#}
+{#                                <td>#}
+{#                                    <span style="color:#ffffff;padding-left: 100px;">#}
+{#                                        07 AM - 8 PM#}
+{#                                    </span>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                            <tr>#}
+{#                                <td>Sunday</td>#}
+{#                                <td>#}
+{#                                    <span style="color:#ffffff;padding-left: 100px;">#}
+{#                                        Closed#}
+{#                                    </span>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                        </table>#}
+                        <ul>
+                            <li class="footer-l">
+                                <span class="footer-days">Monday - Friday</span>
+                                <span class="footer-days-sch"
+                                        style="color:#ffffff;padding-left: 43px;">
+                                    07 AM - 10 PM
+                                </span>
+                            </li>
+                            <li class="footer-l">
+                                <span class="footer-days">Saturday</span>
+                                <span class="footer-days-sch"
+                                        style="color:#ffffff;padding-left: 100px;">
+                                    07 AM - 8 PM
+                                </span>
+                            </li>
+                            <li class="footer-l">
+                                <span class="footer-days">Sunday</span>
+                                <span class="footer-days-sch"
+                                        style="color:#ffffff;padding-left: 110px;">
+                                    Closed
+                                </span>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <aside class="widget widget-recent-entries"
+                           style="margin-bottom: 10px; color:white;">
+                        <div class="widget-title">
+                            <span class="footer-header">
+                                FUNCTIONAL VIBES is more than a training centre...
+                            </span>
+                        </div>
+
+                        <form class="form--merge form--no-labels form--active"
+                              action="{% url 'subscribe' %}"
+                              enctype="multipart/form-data"
+                              method="post"
+{#                              style="margin-top: -30px;"#}
+                              id="subForm"
+                              data-error="Please fill all fields correctly."
+                              data-success="Thanks for signing up! Please check your inbox for confirmation email."
+                              novalidate="novalidate">
+                            {% csrf_token %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                       {% for field in form %}
+                                          {% for error in field.errors %}
+                                              <li>{{ error|escape }}</li>
+                                          {% endfor %}
+                                       {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        {% for error in form.non_field_errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+{#                            <br>#}
+                            <div class="col-md-12">
+                                <input type="text"
+                                       style="width: 40%;height: 38px;"
+{#                                       class="col-md-6"#}
+                                       id="id_first_name"
+                                       name="first_name"
+                                       required
+                                       placeholder="Your first name">
+                                <input type="text"
+                                       style="width: 40%;margin-left:20px; height: 38px;"
+{#                                       class="col-md-6"#}
+                                       id="id_last_name"
+                                       name="last_name"
+                                       required
+                                       placeholder="Your last name">
+                            </div>
+
+                            <div class="col-md-12" style="padding-top: 20px">
+                                <input type="email"
+                                       style="width: 40%;height: 38px;"
+    {#                                   class="col-md-8 col-sm-6"#}
+                                       id="id_email_id"
+                                       name="email_id"
+                                       required
+                                       placeholder="Your e-mail">
+        {#                        <button type="submit" class="btn">Go</button>#}
+    {#                            <a class="btn btn-outline-brand" href="#">Go</a>#}
+                                <input type="submit"
+{#                                       style="width: 35%;margin-left: 10%;"#}
+                                       style="width: 40%;margin-left: 20px;"
+{#                                       class="btn btn-outline-brand pull-right"#}
+                                       class="btn btn-outline-brand"
+                                       value="Submit">
+                            </div>
+
+                            <p class="footer-body" style="margin-top: 30px">
+                                &quot;Sign up and we will be happy to share with you practical tools,
+                                knowledge and inspiring insights to live a healthier and happier life&quot;
+                            </p>
+
+                            <input type="checkbox" required id="id_priv-terms" name="priv-terms">
+                            <i class="newsletter-description" style="margin-top: 30px">
+                                By entering your info, you will become a Functional Vibes buddy:
+                                <span class="personal-training">
+                                    we will give you access to special offers
+                                    and you will be the first to know about
+                                    cool events and initiatives aimed at taking control over your daily wellbeing.
+                                    We will also share with you a ton of good vibes and positivity because we strongly
+                                    believe that &quot;The journey towards a healthier you starts with a smile&quot;.
+                                        (Unsub anytime in a click) You also agree to our
+                                    <a href="/media/policy/Functional_Vibes_PRIVACY_FORM.pdf" target="_blank">
+                                    privacy policy
+                                </a>.
+                                </span>
+
+                                <a class="read-more" style="background-color: white; margin:2px;">
+                                    Read more
+                                </a>
+                            </i>
+
+                        </form>
+                    </aside>
+                    {% comment %}
+                    <aside class="widget widget-text" style="margin-bottom: 10px;">
+
+                        <div class="widget-title">
+                            <h6>Like us on facebook</h6>
+                        </div>
+                        <div class="textwidget">
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffunctionalvibes%2F&tabs=height=400&small_header=false&hide_cover=false&show_facepile=true&appId"
+                                    style="border:none;overflow:hidden;width:98%!important"
+                                    scrolling="no"
+                                    frameborder="0"
+                                    allowTransparency="true"
+                                    allow="encrypted-media">
+
+                            </iframe>{# timeline& #}
+                        </div>
+                    </aside>
+                    <div class="widget-title">
+                        <h6>
+                            FOLLOW
+                            <a href="https://www.instagram.com/functional_vibes/" target="_blank"><img src="https://functionalvibes.com/media/images/logo.webp" width="100" height="auto" style="background-color: white;"></a>
+                            ON INSTAGRAM
+                        </h6>
+                    </div>
+                    <div class="insta_feed"></div>
+                    {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>&copy; <span id="year"></span> functional vibes, All Rights Reserved.
+                            <a href="/media/policy/Functional_Vibes_PRIVACY_FORM.pdf" target="_blank">
+                                Privacy Policy
+                            </a>.
+                            Developed by <a href="https://whitedyn.com" target="_blank">White Dynamics</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

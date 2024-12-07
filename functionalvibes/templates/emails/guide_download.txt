@@ -1,0 +1,7 @@
+<h3>Thank you {{first_name}}<h3>
+Here is the <a href="https://functionalvibes.com/guide-questionary/">download link</a>.<br/>
+Discover more about your Movement Experience.<br/>
+<a href="https://www.functionalvibes.com">Visit our website</a><br/>
+
+<p>>Thanks,<br/>
+Functional Vibes team

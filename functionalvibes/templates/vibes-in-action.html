@@ -1,0 +1,142 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        Vibes in action - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/vibes-in-action/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Members - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/members-top.jpg" />
+    <meta property="og:image:alt" content="Vibes in action/ - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        {% comment %}
+        <section class="module-cover text-center para-desktop"
+                 style='background-image: url("{% static 'images/Vibes-6.jpg' %}");'>{##}
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center" style="padding-top:20px">
+                        <h3 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >
+                            <b>Vibes in action</b>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endcomment %}
+
+        <section class="text-center"
+                 style="background-position: 50% 1%; background-size: cover;background-image: url({% static 'images/Vibes-6.jpg' %}); width: 100%; height: 720px!important;background-repeat: no-repeat;">
+                {##}
+            <div class="container">
+                <div class="row" style="padding-top:200px;">
+                    <div style="margin-top:-20px!important;margin-right:auto!important;margin-left:auto!important;">
+                        <h3 class="text-center over-title" style="width:width: 32em!important;">
+                            <b>Vibes in action</b>
+                        </h3>
+                        {% comment %}
+                        <p class="lead m-b-30 over-title-center" style="color:#ffffff;background-color: #333333;font-size:18px">
+                            <i>
+                                Unlock your potential in terms of wellbeing improvement<br/>
+                                Increase your knowledge and find out practical tools to take action right away<br/>
+                                Enjoy the good vibes of a new self-care paradigm
+                            </i>
+                        </p>
+                        {% endcomment %}
+                        <div class="slides-navigation" style="margin-left:120px;">
+                            <a class="down" href="#videos" style="font-size: 50px;">
+                                <span class="ti-angle-down"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {#{% if user.is_authenticated or user.is_staff %}#}
+        <section class="module" id="videos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 m-auto text-center">
+                        <h1>
+                            Vibes in action
+                        </h1>
+                        <p class="lead">
+                            Unlock your potential in terms of wellbeing improvement<br/>
+                            Increase your knowledge and find out practical tools to take action right away<br/>
+                            Enjoy the good vibes of a new self-care paradigm
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="space" data-MY="60px"></div>
+                    </div>
+                </div>
+                <div class="row row-post-masonry">
+                    {% for video in videos %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+                            <!-- Post-->
+                            <article class="post">
+                                <div class="post-preview">
+                                    {% if video.vimeo %}
+                                        <a href="{% url 'vibes_video_detail' pk=video.pk %}">
+                                            {% comment %}
+                                                <img src="https://i.vimeocdn.com/video/{{ video.vimeo|slice:'18:255' }}.webp?mw=600&mh=600">#}
+                                                <img src="https://i.vimeocdn.com/video/{{ video.vimeo|slice:'18:255' }}_600.jpg">
+                                            {% endcomment %}
+                                            <img src="https://vumbnail.com/{{ video.vimeo|slice:'18:255' }}.jpg">
+                                        </a>
+                                    {% elif video.youtube %}
+                                        <a href="{% url 'vibes_video_detail' pk=video.pk %}">
+                                            <img src="http://i1.ytimg.com/vi/{{ video.youtube|slice:'17:255' }}/hqdefault.jpg">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                <div class="post-wrapper">
+                                    <div class="post-header">
+                                        <h2 class="post-title">
+                                            <a href="{% url 'vibes_video_detail' pk=video.pk %}">
+                                                {{ video.title }}
+                                            </a>
+                                        </h2>
+                                    </div>
+
+                                    <div class="post-content">
+                                        {% comment %}
+                                            {% if video.vimeo or video.youtube %}
+                                                <p>{{ video.description|safe }}</p>
+                                            {% endif %}
+                                        {% endcomment %}
+                                        <p class="pull-right" style="text-align:right">
+                                            <a href="{% url 'vibes_video_detail' pk=video.pk %}">
+                                                Read more
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </article>
+                            <!-- Post end-->
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {#{% endif %}#}
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,152 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+{% block content %}
+<head>
+    <title>
+        Get in touch - Functional Vibes
+    </title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/contact" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Get in touch - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/get_in_touch.jpg" />
+    <meta property="og:image:alt" content="Functional Vibes - your movement experience" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+
+</head>
+    <div class="wrapper">
+        <section class="maps-container">
+            <div class="map"
+                 data-addresses="[50.844188, 4.374549]"
+                 data-info="[Functional Vibes srl<br/>Rue de la loi 67, 1000 - Brussels]"
+                 data-icon="{% static 'images/map-icon.png' %}" data-zoom="15"></div>{# , [44.2507913, 16.3983171] #}
+        </section>
+
+        <section class="module divider-top">
+            <div class="service-container" style="margin-right: -10px;padding:15px">
+                <div class="row">
+                    <div class="col-lg-6 col-md-9 m-auto text-center" >
+                        <h1>Get in touch with us</h1>
+                        <p class="lead" style="font-size:18px;">
+                            You’re one step away from a breakthrough.<br/>
+                            Fill in the form below and we’ll be there for you very soon!
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="space" data-MY="60px"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" style="padding-left: 50px;padding-top: 30px;padding-right:70px!important;">
+                        <form role="form"
+                              action="."
+                              enctype="multipart/form-data"
+                              method="post">
+
+                            {% csrf_token %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-error">
+                                    <ul>
+                                        {% for error in form.non_field_errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="name" id="id_name"
+                                               placeholder="Name*" required="required"
+                                               style="border: 2px solid #6c757d;">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input class="form-control" type="email"
+                                               name="email" id="id_email" placeholder="E-mail*"
+                                               required="required" style="border: 2px solid #6c757d;">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text"
+                                               name="subject" id="id_subject" placeholder="Subject"
+                                               style="border: 2px solid #6c757d;">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control"
+                                                  name="message" id="id_message" placeholder="Message*"
+                                                  rows="12" required="required" style="border: 2px solid #6c757d;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    {{ form.captcha }}
+
+                                    <br/>
+
+                                    <input class="btn btn-square btn-outline-secondary m-b-30 text-left"
+                                           type="submit"
+                                           value="Send Message">
+                                    {#<a class="btn btn-square btn-outline-secondary m-b-30 text-left"#}
+                                            {#name="submit-form"#}
+                                            {#type="submit">#}
+                                        {#Send Message#}
+                                    {#</a>#}
+
+                                </div>
+                            </div>
+                        </form>
+                        {#<!-- Ajax response-->#}
+                        {#<div class="ajax-response text-center" id="contact-response"></div>#}
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="team-item">
+                            <div class="img-container">
+                                <img src="{% static 'images/get_in_touch.jpg' %}" alt="Get in touch photo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-cover para-desktop text-center"
+                 style='height: 100%;background-image: url("{% static 'images/virtual_tour_1.jpg' %}");'>
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center">
+                        <a href="/virtual-tour/">
+                            <h3 class="m-b-20 over-title text-center" style="width: 8em;">
+                                Virtual Tour
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {#{% post_to_facebook object_or_url "Post to Facebook!" %}#}
+    </div>
+{% endblock content %}

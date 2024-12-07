@@ -1,0 +1,571 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load cms_tags %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/contact" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Functional Vibes - your movement experience" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+
+    <meta property="og:image" content="https://functionalvibes.com/static/images/functional_vibes_play.png" />
+    <meta property="og:image:alt" content="Functional Vibes - your movement experience" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+</head>
+
+        <!-- Wrapper-->
+        <div class="wrapper">
+            {% comment %}
+            <section class="module-cover parallax fullscreen text-center" id="home"
+                     data-jarallax-video="https://vimeo.com/746193420" data-overlay="0.45">
+                <div class="container" style="padding-top:400px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20">
+                                <strong>
+                                    Your movement EXPERIENCE
+                                </strong>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endcomment %}
+
+            {% placeholder "home_slides" %}
+
+            <!-- About-->
+            {% comment %}
+            <section class="module" id="about" style="padding-top:50px!important;padding-bottom:20px!important">
+                <h1 class="text-center">
+                    <strong>About</strong>
+{#                    {{ request.META.REMOTE_ADDR }}#}
+                </h1>
+                <p style="padding-top:40px"></p>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4"> {# offset-lg-1#}
+                            <p class="lead m-b-30" style="font-size:18px">
+                                The recipe for your happiness is our professional approach to FUNCTIONAL movement plus a ton of good VIBES.
+                            </p>
+                            <p class="lead m-b-30" style="font-size:18px">
+                                Our customised training plan and evidence-based method are what you need to create a new and healthy routine. You’ll rediscover the pleasure of looking at yourself in the mirror with a smile.
+                            </p>
+                        </div>
+                        <div class="col-lg-8">
+                            <p class="m-b-30">
+                                <img src="{% static 'images/about/About-1.jpg' %}" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="module" style="padding-top:50px!important;padding-bottom:20px!important">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <p class="m-b-30">
+                                <img src="{% static 'images/about/About-2.jpg' %}" alt="">
+                            </p>
+                        </div>
+                        <div class="col-lg-3 offset-lg-1">
+                            <p class="lead m-b-30" style="font-size:18px">
+                                We want this to be your happy place, the “stress-free zone” you look for to spend your precious time. You’ll live an unforgettable movement experience with us taking good care of you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="module" style="padding-top:50px!important;padding-bottom:20px!important">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 offset-lg-1">
+                            <p class="lead m-b-30" style="font-size:18px">
+                                You're the reason we exist. Improving your wellbeing is our mission. We’re a team of highly qualified Coaches and we’re good listeners too. We’ll find the strategy that suits you and your needs best.
+                            </p>
+                        </div>
+                        <div class="col-lg-8">
+                            <p class="m-b-30">
+                                <img src="{% static 'images/about/About-3.jpg' %}" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="module" style="padding-top:50px!important;padding-bottom:20px!important">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <p class="m-b-30">
+                                <img src="{% static 'images/virtual_tour_1.jpg' %}" alt="" style="padding-right: 50px;">
+                                <img src="{% static 'images/about/About-4.jpg' %}" alt="" style="margin-top:-100px;margin-top:-100px;padding-left:50px;">
+                            </p>
+                        </div>
+                        <div class="col-lg-3 offset-lg-1">
+                            <p class="lead m-b-30" style="font-size:18px">
+                                Our Training Center, in the heart of the European district of Brussels, is the ideal place to focus on yourself. Our environment ensures privacy and comfort, while a cosy waiting room provides the perfect setting to connect with others or just to enjoy a coffee. Bright and elegant spaces, separate changing rooms, spacious lockers, and modern bathrooms with showers are the icing on the cake of a unique journey.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endcomment %}
+
+            <section class="module" id="lets-move" style="padding-top:50px!important">
+                {% comment %}
+                <center><h1><b class="text-center">Train with us</b></h1></center>
+                {% endcomment %}
+                <div class="container">
+                    <div class="row main-container">
+                        <div class="col-md-6 col-sm-12" id="personal-training">
+                            <div class="feature" id="feat-1">
+                                <div class="feature-thumb">
+                                    <img src="{% static 'images/personal_movement_coaching66.jpg' %}" alt=""></div>
+                                <div class="feature-content">
+                                    <h4><b>Personal Movement Coaching</b></h4>
+                                    <p style="font-size:18px">
+                                        &quot;Movement is medicine&quot;, as they say. This is so true: exercise can do wonders to prevent
+                                        psychophysical issues or to recover from a number of them. But as any other drug, the
+                                        dose, the frequency and the composition are essential.<br/>
+                                        <span class="personal-training">
+                                            You would never take medicine that is not exactly what you need, right? And you are
+                                            probably always very careful to comply with the dosage your doctor prescribes.
+                                            Well, the same goes for physical activity: the combination of specific exercises, the
+                                            frequency and intensity of your training sessions and the accuracy of your execution are
+                                            crucial for achieving your goals safely.<br/>
+                                            Our Personal Movement Coaching is what you need to make exercise a real, powerful
+                                            medicine with no side effects. Based on the outcomes of our <b>Movement Essentials</b>
+                                            <b>Screening</b>, your individual training program will be the most tailored, accurate and
+                                            effective you can imagine.
+                                        </span>
+                                        <a class="read-more">
+                                            Read more
+                                        </a>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12" id="small-group-training">
+                            <div class="feature" id="feat-2">
+                                <div class="feature-thumb">
+                                    <img src="{% static 'images/small_group_training03.jpg' %}" alt=""></div>
+                                <div class="feature-content">
+                                    <h4><b>Small Group Training</b></h4>
+                                    <p style="font-size:18px">
+                                        Ideal for clients who have already followed a Personal Movement Coaching program with
+                                        us, Small Group Classes are in principle open to newbies: if you don&#39;t have any
+                                        muscular/joint complaints and you feel fit enough to start with a more intense and
+                                        enlivened program, this is the option for you.<br/>
+                                        <span class="personal-training">
+                                            You&#39;ll be coached by a highly qualified Coach while the fun atmosphere to work out with
+                                            cool people just like you.<br/>
+                                            Share your Training Programme with your partner, your colleagues or some friends, or
+                                            take a leap on your own and we guarantee you will soon make new friends.<br/>
+                                            Small Group Classes are composed of 2 to 4 participants who are matched according to
+                                            baseline fitness levels and needs: no risk of frustration or boredom, your training mates will
+                                            be amazing allies to boost your motivation and achieve your goals.<br/>
+                                            Click here to book a free consultation and find out how to enroll!
+                                        </span>
+                                        <a class="read-more">
+                                            Read more
+                                        </a>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %}
+                        <div class="col-md-12">
+                            <ul class="timeline">
+                                <li id="personal-training">
+                                    <div class="timeline-badge"></div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-preview">
+                                            <img src="{% static 'images/personal_training.jpg' %}" alt="">
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4>Personal Movement Coaching</h4>
+                                            <p style="font-size:18px">
+                                                &quot;Movement is medicine&quot;, as they say. This is so true: exercise can do wonders to prevent
+                                                psychophysical issues or to recover from a number of them. But as any other drug, the
+                                                dose, the frequency and the composition are essential.<br/>
+                                                You would never take medicine that is not exactly what you need, right? And you are
+                                                probably always very careful to comply with the dosage your doctor prescribes.
+                                                Well, the same goes for physical activity: the combination of specific exercises, the
+                                                frequency and intensity of your training sessions and the accuracy of your execution are
+                                                crucial for achieving your goals safely.<br/>
+                                                Our Personal Movement Coaching is what you need to make exercise a real, powerful
+                                                medicine with no side effects. Based on the outcomes of our <b>Movement Essentials</b>
+                                                <b>Screening</b>, your individual training program will be the most tailored, accurate and
+                                                effective you can imagine.
+                                            </p>
+{#                                            <p><a href="#">Read more</a></p>#}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="small-group-training">
+                                    <div class="timeline-badge"></div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-preview">
+                                            <img src="{% static 'images/small_group_training.jpg' %}" alt="">
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4>Small Group Training</h4>
+                                            <p style="font-size:18px">
+                                                Ideal for clients who have already followed a Personal Movement Coaching program with
+                                                us, Small Group Classes are in principle open to newbies: if you don&#39;t have any
+                                                muscular/joint complaints and you feel fit enough to start with a more intense and
+                                                enlivened program, this is the option for you.<br/>
+                                                You&#39;ll be coached by a highly qualified Coach while the fun atmosphere to work out with
+                                                cool people just like you.<br/>
+                                                Share your Training Programme with your partner, your colleagues or some friends, or
+                                                take a leap on your own and we guarantee you will soon make new friends.<br/>
+                                                Small Group Classes are composed of 2 to 4 participants who are matched according to
+                                                baseline fitness levels and needs: no risk of frustration or boredom, your training mates will
+                                                be amazing allies to boost your motivation and achieve your goals.<br/>
+                                                Click here to book a free consultation and find out how to enroll!
+                                            </p>
+{#                                            <p><a href="#">Read more</a></p>#}
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- comment %} -->
+                                <li>
+                                    <div class="timeline-badge"></div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-preview">
+                                            <img src="{% static 'images/morning_vibes.jpg' %}" alt="">
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4>Morning Vibes</h4>
+                                            <p style="font-size:18px">
+                                                Start your day with 30 minutes of slow movement and stretch that
+                                                activate the brain, the lymphatic system, the musculature, and brings
+                                                you joy and relaxation to your mind and body.<br/>
+                                                This is Morning Vibes, our only online early morning class which takes
+                                                place two times per week on Zoom.
+                                            </p>
+{#                                            <p><a href="#">Read more</a></p>#}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge"></div>
+                                    <div class="timeline-panel"> {#style="width: 49%;"#}
+                                        <div class="timeline-preview">
+                                            <img src="{% static 'images/ABCDance.jpg' %}" alt="">
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4>ABCDance</h4>
+                                            <p style="font-size:18px">Take your first steps in dance and let yourself be swept away by the music. You’ll be amazed at just how quickly you’ll improve your mobility, coordination and body language. Maybe you'll become an “étoile” at the Opera in Paris, or you’ll just be so happy with your first arabesque.</p>
+{#                                            <p><a href="#">Read more</a></p>#}
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="timeline-badge"></div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-preview">
+                                            <img src="{% static 'images/BootCamp.jpg' %}" alt="">
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4>Boot Camp Vibes</h4>
+                                            <p style="font-size:18px">
+                                                In the beautiful setting of “Parc du Cinquantenaire”, be ready for a one of a kind regenerating activity! Good company, great fun and a boost of energy are just some of the huge benefits of our outdoor workout. And, by the way, the weather is not an issue when the sun shines inside!
+                                            </p>
+{#                                            <p><a href="#">Read more</a></p>#}
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- endcomment %} -->
+                                <div class="timeline-top"></div>
+                                <div class="timeline-bottom"></div>
+                            </ul>
+                        </div>
+                        {% endcomment %}
+                    </div>
+                </div>
+            </section>
+
+            {% placeholder "top_testimonials" %}
+
+            <section class="bg-black text-white">
+{#                     style="color: #ffffff!important;background-image: url("{% static 'images/mes/MES.png' %}");">#}
+{#                     style="color: #ffffff!important;background-image: url(https://purepng.com/public/uploads/thumbnail//perry-the-platypus-in-reallife-l7k.png);">#}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-9 m-auto text-center">
+{#                            <h2 class="text-white">Movement Essentials Screening</h2>#}
+                            <img src="{% static 'images/mes/MES.png' %}"
+                                 style="width: 300px;"
+                                 alt="mes_01">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <p class="m-b-30">
+                                <img src="{% static 'images/mes/mes_11.jpg' %}" alt="mes_01"
+                                     style="padding-right: 50px;">
+                                <img src="{% static 'images/mes/mes_85.jpg' %}" alt="mes_02"
+                                     style="margin-top:-23px;padding-left:100px;">
+                                <img src="{% static 'images/mes/mes_107.jpg' %}" alt="mes_03"
+                                     style="margin-top: -20px;padding-left: 60px;padding-right: 90px;">
+                            </p>
+                        </div>
+{#                        <div class="col-lg-3 offset-lg-1">#}
+                        <div class="col-lg-6">
+                            <p class="lead m-b-30" style="font-size:18px">
+                                Just like a house cannot be built without solid foundations,
+                                efficient and safe human movement must rest on solid functional pillars.
+                            </p>
+                            <p class="lead m-b-30" style="font-size:18px">
+                                That is why, back in 2020, we designed our “Movement Essentials Screening”, an
+                                innovative tool rooted in scientific evidence and clinical experience,
+                                which helps us to methodically assess:
+                                <ul>
+                                    <li>Breathing patterns and core awareness</li>
+                                    <li>Foot function</li>
+                                    <li>Baseline mobility</li>
+                                    <li>Hip function and coordination</li>
+                                </ul>
+                            </p>
+                            <br/>
+                            <p class="lead m-b-30" style="font-size:18px">
+                                Thanks to MES, in the past 4 years we have helped 300+ clients to get back in shape
+                                safely, often getting rid of musculoskeletal issues such as lower back pain or neck pain.<br/>
+                                In fact, the outcomes of MES allow us to design highly tailored and effective training
+                                programs, based on 3 main features:
+                            </p>
+                            <ul>
+                                <li>Gradual advancement and constant monitoring of progress</li>
+                                <li>Injury prevention or treatment</li>
+                                <li>Safe return to good shape with lasting results</li>
+                            </ul>
+                            <br/>
+
+                            <p class="lead m-b-30" style="font-size:18px">
+                                Don't wait any longer, book your Movement Essentials Screening
+                                <a href="/contact/">here</a>!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="service-container">
+                    <div class="row">
+                        {% comment %}
+                        <div class="col-md-6">
+                            <div class="team-item">
+                                <div class="img-container">
+                                    <a href="/testimonials">
+                                        <img src="{% static 'images/about/Testimonials.jpg' %}" alt="">
+                                        <div class="container">
+                                            <div class="overly">
+                                                <h2 class="m-b-20 text-center"
+                                                    style="font-size: 40px;margin-top:180px;color:#ffffff!important;text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">
+                                                    They like us
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="team-item">
+                                <div class="img-container">
+                                    <a href="/contact">
+                                        <img src="{% static 'images/get_in_touch.jpg' %}" alt="">
+                                        {#<div class="overlay">#}
+                                            {#<center>#}
+                                                {#<h2 class="about-footer text-center">#}
+                                                    {#Get in touch#}
+                                                {#</h2>#}
+                                            {#</center>#}
+                                        {#</div>#}
+                                        <div class="container">
+                                            <div class="overly">
+                                                <h2 class="m-b-20 text-center"
+                                                    style="font-size: 40px;margin-top:150px;color:#ffffff!important;text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">
+                                                    Get in touch
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endcomment %}
+
+                        <div class="col-md-6">
+                            <div class="team-item">
+                                <div class="img-container">
+                                    <a href="/how-we-roll">
+                                        <img src="{% static 'images/howweroll50.jpg' %}" alt="">
+                                        <div class="container">
+                                            <div class="overly">
+                                                <h2 class="m-b-20 text-center"
+                                                    style="font-size: 40px;margin-top:180px;color:#ffffff!important;text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">
+                                                    How we do it
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="team-item">
+                                <div class="img-container">
+                                    <a href="/services">
+                                        <img src="{% static 'images/add_services144.jpg' %}" alt="">
+                                        {#<center>#}
+                                            {#<div class="overlay">#}
+                                                {#<h2 class="about-footer text-center">#}
+                                                    {#Additional services#}
+                                                {#</h2>#}
+                                            {#</div>#}
+                                        {#</center>#}
+
+                                        <div class="container">
+                                            <div class="overly">
+                                                <h2 class="m-b-20 text-center"
+                                                    style="font-size: 40px;margin-top:150px;color:#ffffff!important;text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">
+                                                    Additional services
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="module bg-gray p-t-0"
+                style="margin-bottom:-80px; margin-top:60px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 m-auto">
+                            <div class="space" data-mY="-60px"></div>
+                            <div class="modal-video-container">
+                                <img src="{% static 'images/functional_vibes_play.png' %}" alt="">
+{#                                <img src="{% static 'images/video_pres.jpg' %}" alt="">#}
+                                <a class="play-button" href="https://vimeo.com/464745807"></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="space" data-mY="60px"></div>
+                        </div>
+                    </div>
+                    {% endcomment %}
+                </div>
+            </section>
+
+{#            <!-- Modal-->#}
+{#            <section class="module divider-top">#}
+{#                <div class="container">#}
+{#                    <div class="row align-items-center">#}
+{#                        <div class="col-lg-5">#}
+{#                            <h2>Easy and Simple.</h2>#}
+{#                            <p class="lead m-b-30">Map where your photos were taken and discover local points of interest. Map where your photos.</p>#}
+{#                            <button class="btn btn-circle btn-outline-brand m-b-30" type="button" data-toggle="modal" data-target="#modal-2">Large modal</button>#}
+{#                        </div>#}
+{#                        <div class="col-lg-6 offset-lg-1">#}
+{#                            <p class="m-b-30"><img src="{% static 'images/main/about-4.jpg' %}" alt=""></p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!-- Modal-->#}
+{#                    <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+{#                        <div class="modal-dialog modal-lg" role="document">#}
+{#                            <div class="modal-content">#}
+{#                                <div class="modal-header">#}
+{#                                    <h5 class="modal-title">Modal title</h5>#}
+{#                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>#}
+{#                                </div>#}
+{#                                <div class="modal-body">...</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </section>#}
+{#            <!-- Modal-->#}
+{#            <section class="module module divider-top">#}
+{#                <div class="container">#}
+{#                    <div class="row align-items-center">#}
+{#                        <div class="col-lg-6">#}
+{#                            <p class="m-b-30"><img src="{% static 'images/main/about-4.jpg' %}" alt=""></p>#}
+{#                        </div>#}
+{#                        <div class="col-lg-5 offset-lg-1">#}
+{#                            <h2>Easy and Simple.</h2>#}
+{#                            <p class="lead m-b-30">Map where your photos were taken and discover local points of interest. Map where your photos.</p>#}
+{#                            <button class="btn btn-circle btn-outline-brand m-b-30" type="button" data-toggle="modal" data-target="#modal-3">Small modal</button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!-- Modal-->#}
+{#                    <div class="modal fade" id="modal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+{#                        <div class="modal-dialog modal-sm" role="document">#}
+{#                            <div class="modal-content">#}
+{#                                <div class="modal-header">#}
+{#                                    <h5 class="modal-title">Modal title</h5>#}
+{#                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>#}
+{#                                </div>#}
+{#                                <div class="modal-body">...</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </section>#}
+{#            <!-- Modal-->#}
+        </div>
+{% endblock content %}
+
+{% block more-js %}
+    <script>
+        let a = document.querySelectorAll('.read-more');
+        let mainText = document.querySelectorAll('.personal-training');
+        let container = document.querySelectorAll('.main-container');
+        // console.log(btn);
+        // console.log(mainText);
+        // console.log(container);
+
+        a.forEach((i) => {
+            i.addEventListener('click', (evt) => {
+                // console.log(evt.target.previousElementSibling);
+                let moreContent = evt.target.previousElementSibling;
+                let button = evt.target;
+                console.log(button);
+                console.log("moreContent", moreContent);
+                console.log("moreContent.style.display", moreContent.style.display);
+                // console.log(moreContent);
+                if (!moreContent.style.display || moreContent.style.display == 'none') {
+                    console.log("Display hidden, will show content and change link to read less");
+                    moreContent.style.display = 'block';
+                    evt.target.innerHTML = 'Read less';
+                } else if (moreContent.style.display == 'block'){
+                    console.log("Display block, will hide content and change link to read more");
+                    moreContent.style.display = 'none';
+                    evt.target.innerHTML = 'Read more';
+                } else {
+                    console.log("Display hidden, will show content and change link to read less");
+                    moreContent.style.display = 'none';
+                    evt.target.innerHTML = 'Read more';
+                }
+            })
+        });
+    </script>
+{% endblock more-js %}

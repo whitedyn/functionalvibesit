@@ -1,0 +1,82 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+{% block content %}
+<head>
+    <title>
+        Jobs - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/jobs/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jobs - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/team1.jpg" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="Jobs - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center para-desktop"
+                 style='background-image: url("{% static 'images/jobs85.jpg' %}");'>{#parallax#}
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center" style="padding-top:400px">
+                        <h3 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >
+                            <b>Jobs</b>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module bg-gray p-t-0 p-b-40">
+            <div class="container">
+                <div class="space" data-MY="-60px"></div>
+                <div class="row">
+                </div>
+            </div>
+        </section>
+
+        <section style="padding-top:100px">
+            <div class="service-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="team-item">
+                            <div class="img-container">
+                                <a href="/contact">
+                                    <img src="{% static 'images/200.jpg' %}" alt="">
+                                    <div class="overly">
+                                        <h2 class="m-b-20 text-center"
+                                            style="font-size: 40px;margin-top:150px;color:#ffffff!important;text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">
+                                            Join our team
+                                        </h2>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="team-item" style="padding:50px;font-size:18px">
+                            If you are a passionate professional in Sport, Human Movement or Nutrition.<br/>
+                            If you have always dreamed of being part of a dynamic and resourceful Team.<br/>
+                            If you believe in the power of continuing education.
+
+                            <p></p>
+                            <p>…don’t hesitate to send us your general application and cover letter at <b>info@functionalvibes.com</b>: we’ll give you a feedback as soon as possible!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock content %}

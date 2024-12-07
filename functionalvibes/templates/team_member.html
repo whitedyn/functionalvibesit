@@ -1,0 +1,289 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+{% block content %}
+<head>
+    <title>
+        {{ team_member.name }} - Functional Vibes
+    </title>
+    {#<script src="https://www.google.com/recaptcha/api.js" async defer></script>#}
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/member/{{ team_member.slug }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Get in touch - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="{{ team_member.photo.url }}" />
+    <meta property="og:image:alt" content="Functional Vibes - The movement experience" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module" style="padding-top:100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb justify-content-left">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/team">Team</a></li>
+                            <li class="breadcrumb-item active">{{ team_member.name }}</li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="shop-single-item-photos">
+{#                            <a class="shop-single-item-popup" href="assets/images/shop/5.jpg">#}
+                            {% if team_member.photo %}
+                                <img src="{%if team_member.photo.url%}{{ team_member.photo.url }}{%endif%}" alt="">
+                            {% endif %}
+                            <br>
+                            <h2 class="shop-single-item-title text-center">
+                                {% for lan in team_member.language.all %}
+                                    <img src="/static/images/flags/{{ lan.abbreviation }}.png"
+                                         alt="{{ lan }}" title="Speaks {{ lan }}">
+                                {% endfor %}
+                            </h2>
+                            <hr class="m-t-30 m-b-30">
+                            {% if team_member.email or team_member.telephone %}
+                                <div class="info-list">
+                                    {% if team_member.email %}
+                                        <li>
+                                            <span class="info-list-title">E-mail:</span>
+                                            <span>
+                                                <a href="mailto:{{ team_member.email }}">
+                                                    {{ team_member.email }}
+                                                </a>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if team_member.telephone %}
+                                        <li>
+                                            <span class="info-list-title">Telephone:</span>
+                                            <span>{{ team_member.telephone }}</span>
+                                        </li>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% if team_member.facebook or team_member.twitter or team_member.linkedin or team_member.instagram %}
+                                <hr class="m-t-30 m-b-30">
+                                <div class="info-list">
+                                    <li>
+                                        <span class="info-list-title">Social media:</span><span>
+                                            <ul class="social-icons">
+                                                {% if team_member.facebook %}
+                                                    <li>
+                                                        <a href="{{ team_member.facebook }}" target="_blank">
+                                                            <i class="ti-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if team_member.twitter %}
+                                                    <li>
+                                                        <a href="{{ team_member.twitter }}" target="_blank">
+                                                            <i class="ti-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if team_member.linkedin %}
+                                                    <li>
+                                                        <a href="{{ team_member.linkedin }}" target="_blank">
+                                                            <i class="ti-linkedin"></i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if team_member.instagram %}
+                                                    <li>
+                                                        <a href="{{ team_member.instagram }}" target="_blank">
+                                                            <i class="ti-instagram"></i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                    </span>
+                                    </li>
+                                </div>
+                            {% endif %}
+{#                            </a>#}
+{#                            <ul class="shop-single-item-gallery">#}
+{#                                <li><a class="shop-single-item-popup" #}
+{#                                       href="assets/images/shop/1.jpg">#}
+{#                                    <img src="assets/images/shop/1.jpg" alt="">#}
+{#                                </a>#}
+{#                                </li>#}
+{#                                <li><a class="shop-single-item-popup" #}
+{#                                       href="assets/images/shop/2.jpg">#}
+{#                                    <img src="assets/images/shop/2.jpg" alt="">#}
+{#                                </a>#}
+{#                                </li>#}
+{#                                <li><a class="shop-single-item-popup" #}
+{#                                       href="assets/images/shop/3.jpg">#}
+{#                                    <img src="assets/images/shop/3.jpg" alt="">#}
+{#                                </a>#}
+{#                                </li>#}
+{#                            </ul>#}
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="shop-single-item">
+                            <h2 class="shop-single-item-title">
+                                {{ team_member.name }}
+                            </h2>
+
+                            {% if team_member.position %}
+                                <div class="shop-single-item-rating">
+                                    {{ team_member.position }}
+                                </div>
+                            {% endif %}
+{#                            <h2 class="shop-single-item-price">$100.00</h2>#}
+                            {% if team_member.description %}
+                                <div class="shop-single-item-description">
+                                    <p>{{ team_member.description|safe }}</p>
+                                </div>
+                            {% endif %}
+
+                            {#{% if request.user.is_staff %}#}
+                            <div class="form-row">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+
+                                        <a class="btn btn-square btn-outline-secondary m-b-30"
+                                           type="button"
+                                           data-toggle="modal"
+                                           data-target="#modal-{{ team_member.slug }}">
+                                           Book {{ team_member.name }}
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <div class="modal fade"
+                                     id="modal-{{ team_member.slug }}"
+                                     tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">
+                                                    Send book request for {{ team_member.name }}
+                                                </h5>
+                                                <button class="close"
+                                                        type="button"
+                                                        data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <form role="form"
+                                                  action="."
+                                                  enctype="multipart/form-data"
+                                                  method="post">
+                                                {% csrf_token %}
+                                                <div class="modal-body">
+
+                                                    {% if form.errors %}
+                                                        <div class="alert alert-error">
+                                                            <ul>
+                                                                {% for error in form.non_field_errors %}
+                                                                    <li>{{ error }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endif %}
+
+                                                    <input type="hidden" id="id_team_member_pk" name="team_member_pk"
+                                                           value="{{ team_member.email }}">
+
+                                                    <div class="form-group">
+                                                        <input class="form-control"
+                                                               type="text"
+                                                               name="name"
+                                                               id="id_name"
+                                                               placeholder="Your full name*"
+                                                               required="">
+                                                        {#<p class="help-block text-danger">*This field is required</p>#}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control"
+                                                               type="text"
+                                                               name="phone"
+                                                               id="id_phone"
+                                                               placeholder="Your phone number*"
+                                                               required="">
+                                                        {#<p class="help-block text-danger">*This field is required</p>#}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control"
+                                                               type="email"
+                                                               name="email"
+                                                               id="id_email"
+                                                               required="required"
+                                                               placeholder="Your email address">
+                                                        <p class="help-block text-danger"></p>
+                                                    </div>
+                                                    <div class="form-group" style="display:none!important;">
+                                                        <input class="form-control"
+                                                               type="text"
+                                                               name="coach"
+                                                               id="id_coach"
+                                                               value="{{team_member.name}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control"
+                                                               type="datetime-local"
+                                                               name="date_requested"
+                                                               id="id_date_requested"
+                                                               required="required"
+                                                               placeholder="Date and time*">
+                                                        {#<p class="help-block text-danger">*This field is required</p>#}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-control"
+                                                               type="text"
+                                                               name="comments"
+                                                               id="id_comments"
+                                                               placeholder="Your comments">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    {#<div class="col-md-12">#}
+                                                        {#{{ form.captcha }}#}
+                                                    {#</div>#}
+
+                                                    <div class="col-md-12">
+                                                        {#<button class="btn btn-square btn-outline-secondary m-b-30" type="submit">#}
+                                                            {#Send book request#}
+                                                        {#</button>#}
+                                                        <input class="btn btn-square btn-outline-secondary m-b-30 text-left"
+                                                               type="submit"
+                                                               value="Send book request">
+                                                        <button class="btn btn-square btn-outline-danger m-b-30"
+                                                                type="button"
+                                                                data-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {#{% endif %}#}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {#{% post_to_facebook object_or_url "F" %}#}
+{% endblock content %}

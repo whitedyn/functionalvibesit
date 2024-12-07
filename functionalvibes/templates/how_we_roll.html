@@ -1,0 +1,404 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+<head>
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" >
+</head>
+
+{% block content %}
+<head>
+    <title>
+        How we do it - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/how-we-roll/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How we do it - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/HowWeRoll.jpg" />
+    <meta property="og:image:alt" content="How we do it - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+
+        <section class="module-cover para-desktop text-center"
+                 style='height: 100%;background-image: url("{% static 'images/howweroll50.jpg' %}");'>
+                 {#parallax#}{#margin-top: 5px;">#}
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center">
+                        <h3 class="text-center over-title-center" style="color:#333333; background-color: #ffffff;" >
+                            <b>THIS IS HOW WE DO IT</b>
+                        </h3>
+                        <p class="lead m-b-30 over-title-center p-text-white">
+                            <i>Our 12 golden rules</i>
+                        </p>
+                    </div>
+                    <div class="slides-navigation">
+                        <a class="down" href="#points" style="font-size: 50px;left:50%!important;top: 200px;">
+                            <span class="ti-angle-down"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% for point in points %}
+
+            {% if point.order == 1 %}
+                <section class="module" >
+                    <div class="container" id="points">
+                        <div class="row">
+                            <div id='hwr01' class="col-lg-5">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead m-b-30" style="font-size:18px">
+                                    {{ point.description }}
+                                </p>
+                            </div>
+                            <div class="come-in col-lg-6 offset-lg-1">
+                                <p class="m-b-30">
+                                    <img src="{{ point.image.url }}" alt=""></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 2 %}
+                <section class="module-cover text-center para-desktop"
+                         style='background-image: url("{{ point.image.url }}");'>{#parallax#}
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="over-title-center">
+                                <h3 style="color: #333333; background-color: #ffffff;padding:10px;">
+                                    <u>{{ point.order }}</u><br/>
+                                    {{ point.title }}
+                                </h3>
+
+                                <p class="lead m-b-30 p-text-white" style="padding:20px;background-color: #333333;font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 3 %}
+                <section class="module" style="padding-bottom:30px">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <p class="m-b-30">
+                                    <img src="{{ point.image.url }}" alt="">
+                                </p>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead m-b-30" style="font-size:18px">
+                                    {{ point.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 4 %}
+                <section class="module" style="padding-bottom:30px;padding-top:30px">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-9 m-auto text-center">
+                                <h1><u>{{ point.order }}</u></h1>
+                                <h1>{{ point.title }}</h1>
+                                <p class="lead" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="space" data-MY="60px"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="feature">
+                                    <div class="feature-thumb">
+                                        <img src="{{ point.image.url }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 5 %}
+                <section class="module" style="padding-bottom:30px;padding-top:30px">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-9 m-auto text-center">
+                                <div class="feature">
+                                    <div class="feature-thumb">
+                                        <img src="{{ point.image.url }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-9 m-auto text-center">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 6 %}
+                <section class="module" style="padding-bottom:30px;">
+                    <div class="container">
+                        <div class="row">
+                            <div id='hwr01' class="col-lg-5">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead m-b-30" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                            <div onload="document.getElementById(test).style.opacity='1'" class="col-lg-6 offset-lg-1">
+                                <p class="m-b-30">
+                                    <img src="{{ point.image.url }}" alt=""></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 7 %}
+                <section class="module" style="padding-bottom:30px;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <p class="m-b-30">
+                                    <img src="{{ point.image.url }}" alt="">
+                                </p>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead m-b-30" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 8 %}
+                <section class="module" style="padding-top:30px;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 offset-lg-1">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead m-b-30" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="m-b-30">
+                                    <img src="{{ point.image.url }}" alt="">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 9 %}
+                <section class="module-cover text-center para-desktop"
+                         style='background-image: url("{{ point.image.url }}");'>{#parallax#}
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="over-title-center">
+                                <h3 style="color: #333333; background-color: #ffffff;padding:10px;">
+                                    <u>{{ point.order }}</u><br/>
+                                    {{ point.title }}
+                                </h3>
+
+                                <p class="lead m-b-30 p-text-white">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 10 %}
+                <section class="module" style="padding-bottom:30px;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <p class="m-b-30">
+                                    <img src="{{ point.image.url }}" alt="">
+                                </p>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1">
+                                <h2><u>{{ point.order }}</u></h2>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead m-b-30" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if point.order == 12 %}
+                <section class="module-cover text-center" style="background-position: 50% 1%;background-size: cover;
+                         background-repeat: no-repeat;
+                         background-image: url({{ point.image.url }});
+                         width: 100%; height: 1000px;">
+
+                    <div class="container"
+                         style="position: absolute;bottom: 10px;left: 0; right: 0; margin-left: auto;margin-right: auto; ">
+                        <div class="row">
+                            <div class="over-title-center">
+                                <h3 style="color: #333333; background-color: #ffffff; padding:10px;">
+                                    <u>{{ point.order }}</u><br/>
+                                    {{ point.title }}
+                                </h3>
+
+                                <p class="lead m-b-30 p-text-white">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+            {% if point.order == 11 %}
+                <section class="module" style="padding-top:30px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-9 m-auto text-center">
+                                <h1><u>{{ point.order }}</u></h1>
+                                <h2>{{ point.title }}</h2>
+                                <p class="lead" style="font-size:18px">
+                                    {{ point.description|safe }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="space" data-MY="60px"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="feature">
+                                    <div class="feature-thumb">
+                                        <img src="{{ point.image.url }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        {% endfor %}
+
+{#        <section class="module bg-gray">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6 col-md-9 m-auto text-center">#}
+{#                        <h2>Simple Section.</h2>#}
+{#                        <p class="lead">See how your users experience your website in realtime or view trends to see any changes in performance over time.</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+
+{#        <section class="module parallax"#}
+{#                 data-background="assets/images/module-1.jpg"#}
+{#                 data-jarallax-video="https://www.youtube.com/watch?v=ARvle-Ei6Sw"#}
+{#                 data-overlay="0.85"#}
+{#                 data-gradient="1">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6 col-md-9 m-auto text-center">#}
+{#                        <h2>Youtube and Gradient.</h2>#}
+{#                        <p class="lead">See how your users experience your website in realtime or view trends to see any changes in performance over time.</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{##}
+{#        <section class="module parallax"#}
+{#                 data-background="assets/images/module-1.jpg"#}
+{#                 data-jarallax-video="mp4:assets/video/video.mp4,webm:assets/video/video.webm,ogv:assets/video/video.ogv" data-overlay="0.3">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6 col-md-9 m-auto text-center">#}
+{#                        <h2>Local Video.</h2>#}
+{#                        <p class="lead">See how your users experience your website in realtime or view trends to see any changes in performance over time.</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+
+{#        <section class="module">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-5">#}
+{#                        <h2>Easy and Simple.</h2>#}
+{#                        <p class="lead m-b-30">#}
+{#                            Map where your photos were taken and discover local#}
+{#                            points of interest. Map where your photos.#}
+{#                        </p>#}
+{#                    </div>#}
+{#                    <div class="col-lg-6 offset-lg-1">#}
+{#                        <p class="m-b-30">#}
+{#                            <img src="{% static 'images/main/about-4.jpg' %}" alt=""></p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+
+{#        <section class="module module">#}
+{#            <div class="container">#}
+{#                <div class="row align-items-center">#}
+{#                    <div class="col-lg-6">#}
+{#                        <p class="m-b-30"><img src="{% static 'images/main/about-4.jpg' %}" alt=""></p>#}
+{#                    </div>#}
+{#                    <div class="col-lg-5 offset-lg-1">#}
+{#                        <h2>Easy and Simple.</h2>#}
+{#                        <p class="lead m-b-30">Map where your photos were taken and discover local points of interest. Map where your photos.</p>#}
+{#                        <button class="btn btn-circle btn-outline-brand m-b-30" type="button" data-toggle="modal" data-target="#modal-3">Small modal</button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+    </div>
+{% endblock content %}

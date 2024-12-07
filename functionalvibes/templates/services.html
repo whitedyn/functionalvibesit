@@ -1,0 +1,111 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        Additional services - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/services" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Additional services - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/virtual_tour_1.jpg" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="Additional services - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center para-desktop"
+                 style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url({% static 'images/virtual_tour_1.jpg' %}); width: 100%; height: 500px; margin-top: -5px;">
+            <div class="container">
+                <div class="row">
+                    <h3 class="m-b-20 over-title" style="width: 12em;">
+                        <b>Additional services</b>
+                    </h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="module bg-gray p-t-0 p-b-40">
+            <div class="container">
+                <div class="space" data-MY="-60px"></div>
+                <div class="row">
+                    {% for service in services %}
+                        <div class="col-md-6 pricing-wrapper" id="{% if service.slug == 'osteopathy' %}osteopathy{% elif service.slug == 'corporate-wellness' %}corporate_wellness{% elif service.slug == 'active-together' %}active_together{% elif service.slug == 'events' %}events{%endif%}">
+                            <div class="pricing-header" style="padding:0!important;margin-right: -50px!important;margin-left: -50px!important;">
+                                {% if service.photo %}
+                                    <div class="pricing-icon">
+                                        <a {% if service.slug == 'corporate-wellness' %}href="/corporate-wellness/"{% else %}href="{% url 'single_service' slug=service.slug %}"{% endif %}>
+                                            <img src="{{ service.photo.url }}">
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="pricing-price" style="font-size: 20px">
+                                <a {% if service.slug == 'corporate-wellness' %}href="/corporate-wellness/"{% else %}href="{% url 'single_service' slug=service.slug %}"{% endif %}
+                                   style="color:#333333">
+                                    {{ service.title|upper }}
+                                </a>
+                            </div>
+                            {% if service.subtitle or service.email %}
+                                <div class="pricing-body">
+                                    <p class="lead m-b-30" style="font-size:18px">
+                                        {% if service.subtitle %}{{service.subtitle}}<br>{% endif %}
+                            {#            {% if service.email %}e-mail: {{service.email}}{% endif %}#}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+
+                            <div class="pricing-footer">
+                                {% if service.slug == 'osteopathy' or service.slug == 'corporate-wellness' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30"
+                                       {% if service.slug == 'corporate-wellness' %}
+                                            href="/corporate-wellness/"
+                                       {% else %}
+                                       href="{% url 'single_service' slug=service.slug %}"{% endif %}>
+                                        More info
+                                    </a>
+                                {#{% elif service.slug == 'corporate-wellness' %}#}
+                                {% endif %}
+                                {% if service.slug == 'osteopathy' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30" href="/contact">
+                                        Book an appointment
+                                    </a>
+                                {% elif service.slug == 'corporate-wellness' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30" href="/contact">
+                                        Ask for a quote
+                                    </a>
+                                {% elif service.slug == 'active-together' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30" href="/events#tab-7-2">
+                                        Next event
+                                    </a>
+                                {% elif service.slug == 'events' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30" href="/events#tab-7-1">
+                                        Next event
+                                    </a>
+                                {% endif %}
+
+                                {% if service.slug == 'boot-camp-vibes' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30"
+                                       href="{% url 'single_service' slug=service.slug %}">
+                                        More info
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

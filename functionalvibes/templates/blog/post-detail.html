@@ -1,0 +1,119 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+<head>
+    <title>
+        {{ post.title }} - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="{{ post.get_absolute_url }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ post.title }} - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="{{ post.photo }}" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="{{ post.title }} - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+
+{% block content %}
+        <div class="wrapper">
+            <!-- Hero-->
+            <section class="module-cover parallax text-center"
+                     style='background-image: url("{% static 'images/virtual_tour_1.jpg' %}");padding:50px;'
+                     data-overlay="0.3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+{#                            <h2>{{ post.title }}</h2>#}
+                            <h2 class="lead m-b-30 p-text-white"
+                               style="margin-top: 120px; font-size: 22pt">
+                                {{ post.title }}
+                            </h2>
+                            {% comment %}
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url "blog_list" %}">Blog</a></li>
+                                <li class="breadcrumb-item active">
+                                    {{ post.title }}
+                                </li>
+                            </ol>
+                            {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Hero end-->
+
+            <!-- Blog-->
+            <section class="module">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Post-->
+                            <article class="post">
+                                <div class="post-preview">
+                                    <img src="{{ post.post_photo }}" alt="{{ post.id }}">
+                                </div>
+                                <div class="post-wrapper">
+                                    <div class="post-header">
+                                        <h1 class="post-title">{{ post.title }}</h1>
+                                        <ul class="post-meta">
+                                            <li>{{ post.post_date|date:"d/m/Y" }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-content">
+                                        <p>{{ post.body|safe }}</p>
+
+                                        {% comment %}
+                                        <blockquote class="blockquote">
+                                            <p>To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.</p>
+                                            <footer class="blockquote-footer">Amanda Pollock, Google Inc.</footer>
+                                        </blockquote>
+                                        {% endcomment %}
+                                    </div>
+{#                                    <div class="post-footer">#}
+{#                                        <div class="post-tags"><a href="#">Lifestyle</a><a href="#">Music</a><a href="#">News</a><a href="#">Travel</a></div>#}
+{#                                    </div>#}
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="sidebar">
+                                <aside class="widget widget-recent-entries-custom">
+                                    <div class="widget-title">
+                                        <h6>Trends</h6>
+                                    </div>
+                                    <ul>
+                                        {% for trend in trends %}
+                                            <li class="clearfix">
+                                                <div class="wi">
+                                                    <a href="{{trend.get_absolute_url}}">
+                                                        <img src="{{ trend.post_photo }}" alt="{{ trend.id }}">
+                                                    </a>
+                                                </div>
+                                                <div class="wb">
+                                                    <a href="{{trend.get_absolute_url}}">
+                                                        {{ trend.body|safe|truncatechars:50 }}
+                                                    </a>
+                                                    <span class="post-date">{{ trend.post_date|date:"d/m/Y" }}</span>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock content %}

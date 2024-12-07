@@ -1,0 +1,158 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+{% block content %}
+<head>
+    <title>
+        FAQ - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/jobs/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FAQ - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/team1.jpg" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="FAQ - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center para-desktop"
+                 style='background-image: url("{% static 'images/virtual_tour_1.jpg' %}");padding:0;'>{#parallax#}
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center" style="padding-top:200px">
+                        <h3 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >
+                            <b>FAQ</b>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module bg-gray p-t-0 p-b-40">
+            <div class="container">
+                <div class="space" data-MY="-60px"></div>
+                <div class="row">
+                </div>
+            </div>
+        </section>
+
+        <section style="padding-top: 40px">
+            <div class="row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                    <div class="accordion" id="accordion1">
+
+                        {% for faq in faqs %}
+                            <div class="accordion-item">
+                               <div class="accordion-item-header">
+                                  <h6>
+                                      <a class="accordion-link collapsed"
+                                         data-toggle="collapse" href="#collapse-{{ faq.id }}"
+                                         aria-expanded="false">
+                                          {{ faq.title }}
+                                      </a>
+                                  </h6>
+                               </div>
+                               <div class="collapse" id="collapse-{{ faq.id }}" data-parent="#accordion1">
+                                  <div class="accordion-item-body">
+                                      <p class="faq-body">{{ faq.body|safe }}</p>
+                                      {% if faq.id == 10 and price_list_exists %}
+                                          <aside class="widget widget-recent-entries"
+                                                   style="padding: 30px; background-color:#333333; color:white;">
+                                                <p>
+                                                    Do you need our price list?
+                                                </p>
+                                                <form class="form--merge form--no-labels form--active"
+                                                      style="margin-top: -30px"
+                                                      action="{% url 'get_price_list' %}"
+                                                      enctype="multipart/form-data"
+                                                      method="post"
+                                                      id="subForm"
+                                                      data-error="Please fill all fields correctly."
+                                                      data-success="Thanks for signing up! Please check your inbox for confirmation email."
+                                                      novalidate="novalidate">
+                                                    {% csrf_token %}
+
+                                                    {% if form.errors %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                            <ul>
+                                                               {% for field in form %}
+                                                                  {% for error in field.errors %}
+                                                                      <li>{{ error|escape }}</li>
+                                                                  {% endfor %}
+                                                               {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endif %}
+
+                                                    {% if form.errors %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                            <ul>
+                                                                {% for error in form.non_field_errors %}
+                                                                    <li>{{ error }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endif %}
+
+                                                    <br>
+                                                    <input class="col-md-3 col-sm-6 form-mar"
+                                                           id="id_first_name"
+                                                           name="first_name"
+                                                           type="text" required
+                                                           placeholder="Type your first name">
+                                                    <input class="col-md-3 col-sm-6 form-mar"
+                                                           id="id_last_name"
+                                                           name="last_name"
+                                                           type="text" required
+                                                           placeholder="Type your last name">
+                                                    <input class="col-md-3 col-sm-6 form-mar"
+                                                           id="id_email_id"
+                                                           name="email_id"
+                                                           type="email" required
+                                                           placeholder="Type your e-mail Address">
+                            {#                        <button type="submit" class="btn">Go</button>#}
+                        {#                            <a class="btn btn-outline-brand" href="#">Go</a>#}
+                                                    <input class="btn btn-outline-brand form-mar"
+                                                           type="submit"
+                                                           value="Download it here">
+
+                                                    <i class="newsletter-description">
+                                                        <br/>
+                                                        By entering your info, you will become a Functional Vibes buddy:
+                                                        we will give you access to special offers and you will be the first to know about
+                                                        cool events and initiatives aimed at taking control over your daily wellbeing.
+                                                        We will also share with you a ton of good vibes and positivity because we strongly
+                                                        believe that &quot;The journey towards a healthier you starts with a smile&quot;.
+                                                            (Unsub anytime in a click) You also agree to our
+                                                        <a href="/media/policy/Functional_Vibes_PRIVACY_FORM.pdf">
+                                                            privacy policy
+                                                        </a>.
+                                                    </i>
+                                                </form>
+                                            </aside>
+                                      {% endif %}
+                                  </div>
+                               </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                <div class="col-md-2"></div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

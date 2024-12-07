@@ -1,0 +1,131 @@
+<!-- Navigation-->
+<div class="inner-navigation collapse">
+    <div class="inner-nav {% if current_page.is_home %}onepage-nav{% endif %}">
+        <ul class="mob-menu">
+            <li>
+{#                <a href="{% if current_page.is_home %}#about{% else %}/#about{% endif %}">#}
+                <a href="/about">
+                    <span class="menu-item-span">
+                        About
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url "blog_list" %}">
+                    <span class="menu-item-span">
+                        Get inspired
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'faqs_list' %}">
+                    <span class="menu-item-span">
+                        FAQ
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}">
+                    <span class="menu-item-span">
+                        Contact
+                    </span>
+                </a>
+            </li>
+            {% comment %}
+            <li>
+                {#<a href="{% url 'vibes_in_action' %}">#}
+                    <span class="menu-item-span">
+                        Vibes in action
+                    </span>
+                </a>
+            </li>
+            {% endcomment %}
+        </ul>
+
+        <ul class="desktop-menu">
+            <li class="text-center" style="font-size:14px">
+                <a href="/">
+                    <span class="menu-item-span">HOME</span>
+                </a>
+            </li>
+            {%comment%}
+            <li class="text-center" style="font-size:14px">
+                <a href="{% url 'vibes_in_action' %}">
+                    <span class="menu-item-span">
+                        Vibes in action
+                    </span>
+                </a>
+            </li>
+            {%endcomment%}
+            <li class="text-center" style="font-size:14px">
+{#                <a href="{% if current_page.is_home %}#about{% else %}/#about{% endif %}">#}
+                <a href="/about">
+                    <span class="menu-item-span">
+                        About
+                    </span>
+                </a>
+            </li>
+            <li class="text-center" style="font-size:14px">
+                <a href="{% url "blog_list" %}">
+                    <span class="menu-item-span">
+                        Get inspired
+                    </span>
+                </a>
+            </li>
+            <li class="text-center" style="font-size:14px">
+                <a href="{% url 'faqs_list' %}">
+                    <span class="menu-item-span">
+                        FAQ
+                    </span>
+                </a>
+            </li>
+
+
+            <li class="text-center" style="font-size:14px">
+                <a href="/team">
+                    <span class="menu-item-span">TEAM</span>
+                </a>
+            </li>
+            <li class="text-center" style="font-size:14px"><a href="/virtual-tour"><span class="menu-item-span">VIRTUAL TOUR</span></a></li>
+            <li class="text-center" style="font-size:14px"><a href="/how-we-roll"><span class="menu-item-span">HOW WE DO IT</span></a></li>
+            <li class="text-center" style="font-size:14px"><a href="/testimonials"><span class="menu-item-span">THEY LIKE US</span></a></li>
+
+            <li class="text-center" style="font-size:14px"><a href="/service/osteopathy/"><span class="menu-item-span">OSTEOPATHY</span></a></li>
+            <li class="text-center" style="font-size:14px"><a href="/service/corporate-wellness/"><span class="menu-item-span">CORPORATE WELLNESS</span></a></li>
+            <li class="text-center" style="font-size:14px"><a href="/service/boot-camp-vibes/"><span class="menu-item-span">Bootcamp</span></a></li>
+            <li class="text-center" style="font-size:14px"><a href="/service/events/"><span class="menu-item-span">EVENTS</span></a></li>
+
+            <li class="text-center" style="font-size:14px"><a href="/jobs"><span class="menu-item-span">JOBS</span></a></li>
+            <li class="text-center" style="font-size:14px">
+                <a href="{% url 'contact' %}">
+                    <span class="menu-item-span">
+                        Contact
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div class="extra-nav">
+    <ul>
+        <li>
+            <a class="off-canvas-open" href="#">
+                <span class="menu-item-span">
+                    More
+                    <i class="ti-menu"></i>
+                </span>
+            </a>
+        </li>
+
+        <li class="nav-toggle">
+            <a href="#" data-toggle="collapse" data-target=".inner-navigation">
+            {#<a href="#" data-toggle="collapse" data-target=".off-canvas-sidebar">#}
+                <span class="menu-item-span">
+                    MORE
+                    <i class="ti-menu"></i>
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>

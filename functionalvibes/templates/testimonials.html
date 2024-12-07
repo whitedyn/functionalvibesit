@@ -1,0 +1,118 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        They like us - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/testimonials/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="They like us - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/testimonials.jpg" />
+    {#<meta property="og:image" content="{{ service.photo.url }}" />#}
+    <meta property="og:image:alt" content="They like us - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center"
+                 style="background-position: 50% 1%;
+                         background-size: cover;
+                         background-repeat: no-repeat;
+                         background-image: url({% static 'images/theylikeus16.jpg' %});
+                         width: 100%; height: 120%;">
+            <div class="container">
+                <div class="row" style="padding-top:200px;">
+                    <h3 class="text-center over-title" style="width:width: 32em!important;">
+                        <b>This is why they like us</b>
+                    </h3>
+                    <div class="slides-navigation">
+                        <a class="down" href="#testimonials" style="font-size: 50px;left:50%!important;top: 200px;">
+                            <span class="ti-angle-down"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module p-t-35 p-b-0" id="testimonials">
+            <div class="container-fluid">
+                <div class="row row-portfolio" data-columns="5">
+                    <div class="grid-sizer"></div>
+
+                    {% for item in testimonials %}
+                        <div class="portfolio-item {% for cat in item.category.all %} {{ cat.id }} {% endfor %}">
+                            <div class="portfolio-item-wrapper">
+                                {% if item.photo %}
+                                    <div class="portfolio-item-img">
+                                        <img src="{{ item.photo.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                <div class="portfolio-item-caption">
+                                    <h5 class="portfolio-item-title">
+                                        {{ item.reviewer }}
+                                    </h5>
+                                    <h6 class="portfolio-item-title">
+                                        {{ item.title|slice:":50" }}
+                                    </h6>
+                                    <span class="portfolio-item-subtitle serif">
+                                        {{ item.subtitle|slice:":50" }}
+                                    </span>
+
+                                    <a href="#" style="cursor: pointer;"
+                                       data-toggle="modal"
+                                       data-target="#modal-{{ item.id }}">
+                                        <h6 onMouseOver="this.style.color='#505cfd'"
+                                            onMouseOut="this.style.color='#333333'">Read more</h6>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="modal fade"
+                             id="modal-{{ item.id }}"
+                             tabindex="-1"
+                             role="dialog"
+                             aria-labelledby="ModalLabel"
+                             aria-hidden="true">
+                           <div class="modal-dialog modal-lg" role="document">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h5 class="modal-title">{{ item.title }}</h5>
+                                       <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                           <span aria-hidden="true">×</span>
+                                       </button>
+                                   </div>
+                                   <div class="modal-body">
+                                       {% if item.photo %}
+                                            <img src="{{ item.photo.url }}"
+                                                 style="padding-right: 10px; float:left;width:40%"
+                                                 alt="Testimonial image">
+                                       {% endif %}
+                                       <span style="font-size: 30px">{{item.reviewer}}</span><br/>
+                                       <span style="font-size: 30px">"</span>
+                                       <h6 style="font-size: 20px">{{ item.subtitle }}</h6>
+                                       <span style="font-size: 30px">"</span>
+                                       <p>{{ item.description|safe }}</p>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock content %}

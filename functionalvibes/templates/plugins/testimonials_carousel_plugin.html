@@ -1,0 +1,145 @@
+{% load sekizai_tags static %}
+{% load social_share %}
+
+
+<!-- Testimonials-->
+<section class="module">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel review-carousel"
+                     data-carousel-options="{&quot;autoplayTimeout&quot;: 5000}">
+                    {% for item in testimonials %}
+                        <div class="review-card">
+
+                            <div class="review-card-author">
+                                <div class="review-card-author-photo image-cropper">
+                                    {% if item.photo %}
+                                        <a href="#" style="cursor: pointer;"
+                                           data-toggle="modal"
+                                           data-target="#modal-lg-{{ item.id }}">
+                                            <img src="{{ item.photo.url }}"
+                                                 class="profile-pic" alt="{{ item.id }}">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                <div class="review-card-author-info">
+                                    <h4 class="review-card-author-title">
+                                        <a href="#" style="cursor: pointer;"
+                                           data-toggle="modal"
+                                           data-target="#modal-lg-{{ item.id }}">
+                                            {{item.reviewer}}
+                                        </a>
+                                    </h4>
+                                    <span class="star-rating">
+{#                                        <i class="fas fa-star"></i>#}
+{#                                        <i class="fas fa-star"></i>#}
+{#                                        <i class="fas fa-star"></i>#}
+{#                                        <i class="fas fa-star"></i>#}
+{#                                        <i class="far fa-star"></i>#}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="review-card-content">
+                                <p>{{ item.description|slice:":80"|safe }}...</p>
+                                <a href="#" style="cursor: pointer;"
+                                   data-toggle="modal"
+                                   data-target="#modal-lg-{{ item.id }}">
+                                    <h6>Read more</h6>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">
+                    <a class="btn btn-outline-info" href="{% url "testimonials" %}">
+{#                        btn-rectang #}
+                        Check our Testimonials
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="carousel-item-modals">
+    {% for item in testimonials %}
+        {% include "includes/home_testimonial_modal.html" %}
+    {% endfor %}
+</div>
+<!-- Testimonials end-->
+
+{% comment %}
+<!-- Testimonials-->
+<section class="module parallax"
+         data-background="assets/images/module-12.jpg"
+         data-overlay="0.5"
+         style="background-color: darkseagreen; background-image: none; position: relative; z-index: 0;"
+         data-jarallax-original-styles="background-image: url(&quot;assets/images/module-12.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="space m-b-50"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="review-slides owl-carousel">
+                    {% for item in testimonials %}
+                        <div class="review">
+                            <a href="#" style="cursor: pointer;"
+                               data-toggle="modal"
+                               data-target="#modal-{{ item.id }}">
+                                <div class="image-cropper">
+                                    {% if item.photo %}
+                                    <img src="{{ item.photo.url }}" class="profile-pic" alt="{{ item.id }}">
+                                    {% endif %}
+                                </div>
+                                <div class="review-content">
+                                    <blockquote>
+                                        <p>{{ item.description|slice:":80"|safe }}...</p>
+                                        <footer class="blockquote-footer">
+                                            <h4>{{item.reviewer}}</h4>
+                                            <a href="#" style="cursor: pointer;"
+                                               data-toggle="modal"
+                                               data-target="#modal-{{ item.id }}">
+                                                <h6>Read more</h6>
+                                            </a>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="space m-b-50"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">
+                    <a class="btn btn-circle btn-outline-new-white" href="{% url "testimonials" %}">
+                        Check our Testimonials
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div id="carousel-item-modals" style="z-index: 9999">
+            {% for item in testimonials %}
+                {% include "includes/home_testimonial.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Testimonials end-->
+{% endcomment %}

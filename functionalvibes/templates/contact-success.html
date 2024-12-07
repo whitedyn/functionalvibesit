@@ -1,0 +1,53 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+
+{% block content %}
+
+    <head>
+        <title>
+            Message sent
+        </title>
+    </head>
+
+    <div class="wrapper">
+
+        <section class="module divider-top">
+            <div class="service-container" style="margin-right: -20px">
+                <div class="row">
+                    <div class="col-lg-6 col-md-9 m-auto text-center">
+                        <h1>Message sent</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="space" data-MY="60px"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        {% if '/contact-success/' in request.path %}
+                            <p class="lead">Your message has been successfully sent. We will get back to you as soon as possible.
+                        {% elif '/event-request-success/' in request.path %}
+                            <p class="lead">Your event registration request has been successfully sent. We will get back to you as soon as possible.
+                        {% elif '/coach-book-request/' in request.path %}
+                            <p class="lead">
+                                Your booking request has been successfully sent.<br/>
+                                We will get back to you as soon as possible to confirm your booking.
+                            <p class="lead">
+                                Contact us by email at info@functionalvibes.com or by phone at 0484 62 10 76 if you don't hear from us within the next 3 working days.
+                        {% endif %}
+                        <p class="lead">have a great day<br/>
+                        Functional Vibes team
+
+                        <p></p>
+                        <a href="/" class="btn btn-square btn-outline-secondary m-b-30">Go home</a>
+                        <meta http-equiv = "refresh" content = "20; url =/" />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

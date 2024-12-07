@@ -1,0 +1,103 @@
+{% load cms_tags menu_tags sekizai_tags static %}
+
+<div class="off-canvas-sidebar">
+    <div class="off-canvas-sidebar-wrapper">
+        <div class="off-canvas-header">
+            <a class="off-canvas-close" href="#">
+                CLOSE
+                <span class="ti-close"></span>
+            </a>
+        </div>
+        <div class="off-canvas-content">
+            <!-- Text widget-->
+            <aside class="widget widget-text">
+                <div class="textwidget" style="padding-top:50px">
+{#                            <p class="text-center">#}
+{#                                <img src="{% static 'images/logo-light-2.png' %}" alt="" width="80px">#}
+{#                                <img src="{% static 'images/logo.png' %}" alt="" width="250px">#}
+{#                            </p>#}
+{#                            <p class="text-center">See how users experience your website in realtime to see changes.</p>#}
+                    <a href="/"><h5 class="arial text-center" style="padding-bottom: 10px;">HOME</h5></a>
+                    <a href="/team"><h5 class="arial text-center" style="padding-bottom: 10px;">TEAM</h5></a>
+                    <a href="/virtual-tour"><h5 class="arial text-center" style="padding-bottom: 10px;">VIRTUAL TOUR</h5></a>
+
+                    <hr>
+                    <a href="/how-we-roll"><h5 class="arial text-center" style="padding-bottom: 10px;">HOW WE DO IT</h5></a>
+                    <a href="/testimonials"><h5 class="arial text-center" style="padding-bottom: 10px;">THEY LIKE US</h5></a>
+
+                    {% comment %}
+                    <hr>
+                    <a href="/#personal-training">
+                        <h5 class="arial text-center" style="padding-bottom: 10px;">
+                            PERSONAL TRAINING
+                        </h5>
+                    </a>
+                    <a href="/#small-group-training">
+                        <h5 class="arial text-center" style="padding-bottom: 10px;">
+                            SMALL GROUP TRAINING
+                        </h5>
+                    </a>
+                    {% endcomment %}
+
+                    <hr>
+                        <a href="/service/osteopathy/">
+                            <h5 class="arial text-center" style="padding-bottom: 10px;">
+                                OSTEOPATHY
+                            </h5>
+                        </a>
+                        <a href="/corporate-wellness/">
+                            <h5 class="arial text-center" style="padding-bottom: 10px;">
+                                CORPORATE WELLNESS
+                            </h5>
+                        </a>
+                        {% comment %}
+                        <a href="/services#active_together"><h5 class="arial text-center" style="padding-bottom: 10px;">ACTIVE TOGETHER</h5></a>
+                        {% endcomment %}
+                        <a href="/service/boot-camp-vibes/">
+                            <h5 class="arial text-center" style="padding-bottom: 10px;">
+                                BOOTCAMP
+                            </h5>
+                        </a>
+                        <a href="/service/events/">
+                            <h5 class="arial text-center" style="padding-bottom: 10px;">
+                                EVENTS
+                            </h5>
+                        </a>
+                    <hr>
+
+                    <a href="/jobs"><h5 class="arial text-center" style="padding-bottom: 10px;">JOBS</h5></a>
+{#                    <hr>#}
+{#                    <a href="/members"><h5 class="arial text-center" style="padding-bottom: 10px;">MEMBERS</h5></a>#}
+                </div>
+            </aside>
+
+            <!-- Social Icons-->
+            <ul class="social-icons text-center">
+                <li>
+                    <a href="https://www.facebook.com/functionalvibes"
+                       target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                {%comment%}
+                <li>
+                    <a href="https://twitter.com/DavideFiori82" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                {%endcomment%}
+                <li>
+                    <a href="https://www.linkedin.com/company/functional-vibes/"
+                       target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/functional_vibes/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

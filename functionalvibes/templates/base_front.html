@@ -1,0 +1,263 @@
+{% load cms_tags menu_tags sekizai_tags static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels">
+        {#<meta name="author" content="">#}
+        <meta name="facebook-domain-verification" content="j8chbmr4a7rriz2g5ub5f12b8d5t7y" />
+        {% if current_page.is_home %}
+            <title>
+                Functional Vibes - Your movement experience
+            </title>
+        {% endif %}
+
+        {% block facebook_opengraph %}
+        <!-- Facebook Opengraph -->
+        <meta property="og:url" content="https://functionalvibes.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Functional Vibes - your movement experience" />
+        <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+        <meta property="fb:app_id" content="3625437754143193"/>
+        <meta property="og:image" content="https://functionalvibes.com/static/images/logo.png" />
+        <meta property="og:image:alt" content="Functional Vibes - your movement experience" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        {% endblock facebook_opengraph %}
+
+        <!-- Favicons-->
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+<!--        <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">-->
+<!--        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">-->
+<!--        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">-->
+        <!-- Web Fonts-->
+        {%comment%}
+        <link href="https://fonts.googleapis.com/css?family=Times+New+Roman%7CTimes+New+Roman:bold" rel="stylesheet" type="text/css" data-noprefix>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7cPlayfair+Display:400i" rel="stylesheet">
+        {%endcomment%}
+        <!-- Plugins-->
+        {#{% if '/testimonials/' not in request.path %}#}
+        <link href="{% static 'css/plugins.min.css' %}" rel="stylesheet" defer media="all">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        {#{% endif %}#}
+        <!-- Template core CSS-->
+        <link href="{% static 'css/template.css' %}" rel="stylesheet" defer media="all">
+
+{#        {% if '/about/' in request.path %}{% endif %}#}
+        {% comment %}
+            <script>
+                /**
+                 * Stop an iframe or HTML5 <video> from playing
+                 * @param  {Element} element The element that contains the video
+                 */
+                var stopVideos = function () {
+                    var videos = document.querySelectorAll('iframe, video');
+                    Array.prototype.forEach.call(videos, function (video) {
+                        if (video.tagName.toLowerCase() === 'video') {
+                            video.pause();
+                        } else {
+                            var src = video.src;
+                            video.src = src;
+                        }
+                    });
+                };
+            </script>
+        {% endcomment %}
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179720242-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-179720242-1');
+        </script>
+
+        <!-- Facebook Pixel Code -->
+        <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '126765426057506');
+          fbq('track', 'PageView');
+        </script>
+        <noscript>
+          <img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=126765426057506&ev=PageView&noscript=1"/>
+        </noscript>
+        <!-- End Facebook Pixel Code -->
+
+        {% render_block "css" %}
+        {% block "more-css" %}{% endblock "more-css" %}
+    </head>
+    <body>
+    {% cms_toolbar %}
+        {% comment %}
+        <!-- Preloader-->
+        <div class="page-loader">
+            <div class="page-loader-inner">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader end-->
+        {% endcomment %}
+
+        <!-- Header-->
+{#        <header class="header">#}
+{#        <header class="header {% if '/contact/' not in request.path %}header-transparent{% endif %}">#}
+        <header class="header {% if current_page.is_home or '/how-we-roll/' in request.path %}header-transparent{% endif %}"> {##}
+            <div class="container-fluid">
+                <!-- Brand-->
+                <div class="inner-header">
+                    <a class="inner-brand" href="/">
+                        {#functional vibes#}
+                        {#<img src="{% static 'images/logo.png'%}" class="logo-xs" title="Functional Vibes" alt="logo">#}
+                        <img src="/media/images/logo.webp" class="logo-xs" title="Functional Vibes" alt="logo">
+                    </a>
+                </div>
+                {% include 'includes/top-menu.html' %}
+            </div>
+        </header>
+        <!-- Header end-->
+
+        <!-- Wrapper-->
+        <div class="wrapper">
+            {% block content %}{% endblock content %}
+            <!-- Footer-->
+            {% include 'includes/footer.html' %}
+            <!-- Footer end-->
+        </div>
+        <!-- Wrapper end-->
+
+        {% include 'includes/sidebar-menu.html' %}
+
+        <!-- To top button--><a class="scroll-top" href="#top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- Scripts-->
+        <script async src="https://js.convertflow.co/production/websites/31039.js"></script>
+
+        <script>
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+        <script src="{% static 'js/custom/jquery.min.js' %}"></script>
+        <script src="{% static 'js/custom/popper.min.js' %}" ></script>
+        <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+        {% comment %}
+        <script src="{% static 'js/insta/socialstream.jquery.js' %}"></script>
+        <script type="text/javascript">
+            $('.insta_feed').socialstream({
+                socialnetwork: 'instagram',
+                limit: 6,
+                username: 'functional_vibes',
+                overlay: true,
+                apikey: false
+            });
+        </script>
+        {% endcomment %}
+
+
+        {% comment %}
+        <script src="https://platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+        <script type="IN/FollowCompany" data-id="functional-vibes" data-counter="bottom"></script>
+        {% endcomment %}
+
+
+        {% if '/contact/' in request.path %}
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGetl9gpwrk5ardESfhQ5upSJ8uKubhzo"></script>
+        {% endif %}
+<!--        <script src="{% static 'js/custom/plugins.min.js' %}"></script>-->
+        {#{% if '/testimonials/' not in request.path %}#}
+            <script src="{% static 'js/custom/plugins.js' %}"></script>
+        {#{% endif %}#}
+        <script src="{% static 'js/custom/custom.min.js' %}" ></script>
+
+        {% comment %}
+            <script id="mcjs">
+                    !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/e909e8839f7630997c431c751/6569dffc156201e796150b077.js");
+            </script>
+        {% endcomment %}
+
+        <script>
+            (function($) {
+
+            {% comment %}
+              /**
+               * Copyright 2012, Digital Fusion
+               * Licensed under the MIT license.
+               * http://teamdf.com/jquery-plugins/license/
+               *
+               * @author Sam Sehnert
+               * @desc A small plugin that checks whether elements are within
+               *     the user visible viewport of a web browser.
+               *     only accounts for vertical position, not horizontal.
+               */
+            {% endcomment %}
+
+                $.fn.visible = function(partial) {
+
+                    var $t            = $(this),
+                        $w            = $(window),
+                        viewTop       = $w.scrollTop(),
+                        viewBottom    = viewTop + $w.height(),
+                        _top          = $t.offset().top,
+                        _bottom       = _top + $t.height(),
+                        compareTop    = partial === true ? _bottom : _top,
+                        compareBottom = partial === true ? _top : _bottom;
+
+                    return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+                };
+
+            })(jQuery);
+
+            var win = $(window);
+
+            var allMods = $(".modal");
+
+            allMods.each(function(i, el) {
+              var el = $(el);
+              if (el.visible(true)) {
+                el.addClass("already-visible");
+              }
+            });
+
+            win.scroll(function(event) {
+
+              allMods.each(function(i, el) {
+                var el = $(el);
+                if (el.visible(true)) {
+                  el.addClass("come-in");
+                }
+              });
+
+            });
+        </script>
+
+        {% if current_page.is_home %}
+            <script>
+                jQuery( document ).ready(function() {
+                    jQuery('.avia_video').attr('loop', 'true');
+                });
+            </script>
+        {% endif %}
+
+        {% block guide_js %}{% endblock guide_js %}
+        {% block more-js %}{% endblock more-js %}
+
+        {% render_block "js" %}
+    </body>
+</html>

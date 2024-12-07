@@ -1,0 +1,94 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        Members - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/member-login" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Members - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/members-top.jpg" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="Members - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <div class="wrapper">
+        <section class="module-cover text-center para-desktop"
+                 style='background-image: url("{% static 'images/members-top.jpg' %}");'>{#parallax#}
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center" style="padding-top:400px">
+                        <h3 class="text-center" style="color: #333333; background-color: #ffffff;padding:20px" >
+                            Members' area
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module bg-gray p-t-0 p-b-40">
+            <div class="container">
+                <div class="space" data-MY="-60px"></div>
+                <div class="row">
+
+                    <div class="col-md-12 pricing-wrapper" id="osteopathy">
+                        <div class="pricing-header"
+                             style="padding:0!important;margin-right: -50px!important;margin-left: -50px!important;">
+
+                            <div class="bd-callout bd-callout-warning warning">
+                                <p></p>
+                                <p></p>
+                                <h4>
+                                    Videos
+                                </h4>
+                                <p style="font-size:18px">
+                                    Already part of the Functional Vibes big family?<br/>
+                                    Type your password here below to have access to exclusive content
+                                </p>
+                            </div>
+
+                            <div class="pricing-footer" style="padding: 34px 0 45px 20%;">
+                                <div class="col-md-8">
+                                    <form action="{% url 'members' %}" method="get">
+                                        <center>
+{#                                                <label class="text-left">Your member's password:</label>#}
+                                            <div class="input-group">
+    {#                                            <div class="form-group">#}
+                                                    <input class="form-control inline"
+                                                           type="text"
+                                                           name="privilege_password"
+                                                           id="id_privilege_password"
+                                                           placeholder="Password"
+                                                           required="">
+    {#                                                <p class="text-center">#}
+                                                    <button class="btn btn-square btn-outline-secondary m-b-30 pull-left"
+                                                            type="submit">
+                                                        Identify
+                                                    </button>
+    {#                                                </p>#}
+    {#                                            </div>#}
+                                            </div>
+                                        </center>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock content %}

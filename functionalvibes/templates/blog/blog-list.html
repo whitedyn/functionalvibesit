@@ -1,0 +1,263 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+<head>
+    <title>
+        Blog - Functional Vibes
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/faq/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/team1.jpg" />
+    {#<meta property="og:image" content="{{ team_member.photo.url }}" />#}
+    <meta property="og:image:alt" content="Blog - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+
+{% block content %}
+        <div class="wrapper">
+            <section class="module-cover parallax text-center"
+                     style='background-image: url("{% static 'images/virtual_tour_1.jpg' %}");padding:50px;'
+                     data-overlay="0.5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="lead m-b-30 p-text-white"
+                               style="margin-top: 120px; font-size: 22pt">
+                                Knowledge and awareness are your best allies in taking control of your
+                                daily wellbeing and aiming for a healthier and happier life
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Hero end-->
+
+            <!-- Blog-->
+            <section class="module" style="padding-top: 50px!important;">
+                <div class="container">
+
+                    <aside class="widget widget-recent-entries"
+                           style="padding: 30px; background-color:#333333; color:white;">
+{#                        <div class="widget-title">#}
+{#                            <h4>Subscribe</h4>#}
+{#                        </div>#}
+                        <p>
+                            All this sounds cool? Sign up here to get more practical tools, knowledge and inspiring
+                            insights to live a healthier and happier life&quot;
+                        </p>
+                        <form class="form--merge form--no-labels form--active"
+                              action="{% url 'subscribe' %}"
+{#                              action="."#}
+                              enctype="multipart/form-data"
+                              method="post"
+                              id="subForm"
+                              data-error="Please fill all fields correctly."
+                              data-success="Thanks for signing up! Please check your inbox for confirmation email."
+                              novalidate="novalidate">
+                            {% csrf_token %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                       {% for field in form %}
+                                          {% for error in field.errors %}
+                                              <li>{{ error|escape }}</li>
+                                          {% endfor %}
+                                       {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        {% for error in form.non_field_errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            <br>
+                            <input class="col-md-3 col-sm-6"
+                                   id="id_first_name"
+                                   name="first_name"
+                                   type="text" required
+                                   placeholder="Type your first name">
+                            <input class="col-md-3 col-sm-6"
+                                   id="id_last_name"
+                                   name="last_name"
+                                   type="text" required
+                                   placeholder="Type your last name">
+                            <input class="col-md-3 col-sm-6"
+                                   id="id_email_id"
+                                   name="email_id"
+                                   type="email" required
+                                   placeholder="Type your e-mail Address">
+    {#                        <button type="submit" class="btn">Go</button>#}
+{#                            <a class="btn btn-outline-brand" href="#">Go</a>#}
+                            <input class="btn btn-outline-brand"
+                                   type="submit"
+                                   value="Submit">
+
+                            <i class="newsletter-description">
+                                <br/>
+                                By entering your info, you will become a Functional Vibes buddy:
+                                we will give you access to special offers and you will be the first to know about
+                                cool events and initiatives aimed at taking control over your daily wellbeing.
+                                We will also share with you a ton of good vibes and positivity because we strongly
+                                believe that &quot;The journey towards a healthier you starts with a smile&quot;.
+                                    (Unsub anytime in a click) You also agree to our
+                                <a href="/media/policy/Functional_Vibes_PRIVACY_FORM.pdf">
+                                    privacy policy
+                                </a>.
+                            </i>
+                        </form>
+                    </aside>
+
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="row row-post-thumbnail">
+
+                                {% for post in posts %}
+                                <article class="post row align-items-center">
+                                    <div class="col-md-5">
+                                        <div class="post-preview">
+                                            <a href="{{ post.get_absolute_url }}">
+                                                <img src="{{ post.post_photo }}">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="post-wrapper">
+                                            <div class="post-header">
+                                                <h2 class="post-title">
+                                                    <a href="{{ post.get_absolute_url }}">
+                                                        <strong>{{ post.title }}</strong>
+                                                    </a>
+                                                </h2>
+                                                <ul class="post-meta">
+                                                    <li>{{ post.post_date|date:"d/m/Y" }}</li>
+{#                                                    <li><a href="#">Branding</a>, <a href="#">Design</a></li>#}
+                                                </ul>
+                                            </div>
+                                            <div class="post-content">
+                                                <p>
+                                                    {{ post.body|safe|truncatechars:100 }}
+{#                                                    {{ post.body|slice:"5" }}{% if value|length > 5 %}...{% endif %}#}
+                                                </p>
+                                                <p><a href="{{ post.get_absolute_url }}">Read more</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                {% endfor %}
+                            </div>
+
+                            {% comment %}
+                            <!-- Page Navigation-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <nav>
+                                        <ul class="pagination justify-content-center">
+                                            <li class="page-item"><a class="page-link" href="#"><span class="fas fa-angle-left"></span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                            <li class="page-item"><a class="page-link" href="#"><span class="fas fa-angle-right"></span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            {% endcomment %}
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="sidebar">
+
+                                {% comment %}
+                                <!-- Search widget-->
+                                <aside class="widget widget-search">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Type Search Words">
+                                        <button class="search-button" type="submit"><span class="fas fa-search"></span></button>
+                                    </form>
+                                </aside>
+
+                                <!-- Categories widget-->
+                                <aside class="widget widget-categories">
+                                    <div class="widget-title">
+                                        <h6>Categories</h6>
+                                    </div>
+                                    <ul>
+                                        <li><a href="#">Journey <span class="float-right">112</span></a></li>
+                                        <li><a href="#">Development <span class="float-right">86</span></a></li>
+                                        <li><a href="#">Sport <span class="float-right">10</span></a></li>
+                                        <li><a href="#">Photography <span class="float-right">144</span></a></li>
+                                        <li><a href="#">Symphony <span class="float-right">18</span></a></li>
+                                    </ul>
+                                </aside>
+                                {% endcomment %}
+
+                                <!-- Recent entries widget-->
+                                <aside class="widget widget-recent-entries-custom">
+                                    <div class="widget-title">
+                                        <h6>Trends</h6>
+                                    </div>
+                                    <ul>
+                                        {% for trend in trends %}
+                                            <li class="clearfix">
+                                                <div class="wi">
+                                                    <a href="{{trend.get_absolute_url}}">
+                                                        <img src="{{ trend.post_photo }}" alt="{{ trend.id }}">
+                                                    </a>
+                                                </div>
+                                                <div class="wb">
+                                                    <a href="{{trend.get_absolute_url}}">
+                                                        {{ trend.body|safe|truncatechars:50 }}
+                                                    </a>
+                                                    <span class="post-date">{{ trend.post_date|date:"d/m/Y" }}</span>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </aside>
+
+                                {% comment %}
+                                <!-- Twitter widget-->
+                                <aside class="widget twitter-feed-widget">
+                                    <div class="widget-title">
+                                        <h6>Twitter Feed</h6>
+                                    </div>
+                                    <div class="twitter-feed" data-twitter="345170787868762112" data-number="2"></div>
+                                </aside>
+
+                                <!-- Tags widget-->
+                                <aside class="widget widget-tag-cloud">
+                                    <div class="widget-title">
+                                        <h6>Tags</h6>
+                                    </div>
+                                    <div class="tag-cloud"><a href="#">e-commerce</a><a href="#">portfolio</a><a href="#">responsive</a><a href="#">bootstrap</a><a href="#">business</a><a href="#">corporate</a></div>
+                                </aside>
+                                {% endcomment %}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock content %}

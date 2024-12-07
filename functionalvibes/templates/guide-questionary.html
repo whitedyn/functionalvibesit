@@ -1,0 +1,396 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+{% load widget_tweaks %}
+
+{% block content %}
+<head>
+    <title>
+        Download free guide - Functional Vibes
+    </title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/contact" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FV Questionary - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/get_in_touch.jpg" />
+    <meta property="og:image:alt" content="Functional Vibes - The movement experience" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+
+</head>
+    <div class="wrapper">
+
+        <section class="module divider-top" style="margin-top: -100px!important;">
+            <div class="service-container" style="margin-right: -10px;padding:15px">
+                <div class="row">
+                    <div class="col-lg-6 col-md-9 m-auto text-center" >
+                        <h1>Download your free guide now</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="space" data-MY="60px"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{% static 'images/Mockup_Guida_functional_vibes.png' %}"
+                             style="margin-left: 20%;"
+                             alt="free guide">
+
+                        {% comment %}
+                            <div class="team-item">
+                                <div class="img-container">
+                                </div>
+                            </div>
+                        {% endcomment %}
+                    </div>
+
+                    <div class="col-md-6" style="padding-left: 50px;padding-top: 30px;padding-right:70px!important;">
+                        <form role="form"
+                              id = "subscribe"
+                              action="."
+                              enctype="multipart/form-data"
+                              method="post">
+
+                            {% csrf_token %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                       {% for field in form %}
+                                          {% for error in field.errors %}
+                                              <li>{{ error|escape }}</li>
+                                          {% endfor %}
+                                       {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        {% for error in form.non_field_errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="first_name" id="id_first_name"
+                                               placeholder="First name*" required="required"
+                                               style="border: 2px solid #6c757d;">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="last_name" id="id_last_name"
+                                               placeholder="Last name*" required="required"
+                                               style="border: 2px solid #6c757d;">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="email"
+                                               name="email" id="id_email" placeholder="E-mail*"
+                                               required="required" style="border: 2px solid #6c757d;">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text"
+                                               name="phone_number" id="id_phone_number" placeholder="Phone number*"
+                                               required="required" style="border: 2px solid #6c757d;">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <br/>
+                                    <p class="lead" style="font-size:15px;font-weight: bold">
+                                        What is the reason for downloading our free guide?<i style="color:red">*</i>
+                                    </p>
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="maximize_effectiveness_of_my_training"
+                                               id="id_maximize_effectiveness_of_my_training">
+                                            Maximize effectiveness of my training
+                                    </label>
+
+                                    <br/>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="get_back_in_shape"
+                                               id="id_get_back_in_shape">
+                                            Get back in shape
+                                    </label>
+
+                                    <br/>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="learn_how_to_exercise_on_my_own"
+                                               id="id_learn_how_to_exercise_on_my_own">
+                                            Learn how to exercise on my own
+                                    </label>
+
+                                    <br/>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="need_motivation_and_accountability"
+                                               id="id_need_motivation_and_accountability">
+                                            Need motivation and accountability
+                                    </label>
+
+                                    <br/>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="have_a_specific_injury_or_condition"
+                                               id="id_have_a_specific_injury_or_condition">
+                                            Have a specific injury or condition
+                                    </label>
+
+                                    <br/>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="have_a_specific_goal_sport_or_event"
+                                               id="id_have_a_specific_goal_sport_or_event">
+                                            Have a specific goal (sport or event)
+                                    </label>
+
+                                    <br/>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="want_supervision_and_support"
+                                               id="id_want_supervision_and_support">
+                                            Want supervision and support
+                                    </label>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id_get_a_free_assessment">
+                                            Would you like to get a free assessment?<i style="color:red">*</i>
+                                        </label>
+                                        <select name="get_a_free_assessment" class="form-control"
+                                                required id="id_get_a_free_assessment">
+                                            <option value="{{assement.id}}" selected>Please select</option>
+                                            {% for assement in free_assements %}
+                                                <option value="{{assement.id}}">{{assement}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="id_receive_an_offer">
+                                            Do you want to receive an offer?<i style="color:red">*</i>
+                                        </label>
+                                        <select name="receive_an_offer" class="form-control"
+                                                required id="id_receive_an_offer">
+                                            <option value="{{offer.id}}" selected>Please select</option>
+                                            {% for offer in receive_offers %}
+                                                <option value="{{offer.id}}">{{offer}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <p class="lead" style="font-size:12px;">
+                                        Functional Vibes SRL is committed to protecting and respecting your privacy,
+                                        and we’ll only use your personal information to administer your account and
+                                        to provide the products and services you requested from us. From time to time,
+                                        we would like to contact you about our products and services, as well as other
+                                        content that may be of interest to you. If you consent to us contacting you for
+                                        this purpose, please tick below to say how you would like us to contact you:
+                                    </p>
+
+                                    <label class="radio-inline">
+                                        <input type="checkbox"
+                                               name="agree_to_receive_other_communications"
+                                               id="id_agree_to_receive_other_communications" required="required">
+                                            I agree to receive other communications from Functional Vibes SRL.
+                                    </label>
+
+                                    <p class="lead" style="font-size:12px;">
+                                        You can unsubscribe from these communications at any time. For more information
+                                        on how to unsubscribe, our privacy practices, and how we are committed to
+                                        protecting and respecting your privacy, please review our Privacy Policy.
+                                    </p>
+
+                                    <p class="lead" style="font-size:12px;">
+                                        By clicking submit below, you consent to allow Functional Vibes SRL to store
+                                        and process the personal information submitted above to provide you
+                                        the content requested.
+                                    </p>
+                                </div>
+
+
+                                <div class="col-md-12">
+
+                                    {#{{ form.captcha }}#}
+
+                                    <br/>
+
+                                    <input type="hidden" id="email_submit">
+
+                                    <input class="btn btn-square btn-outline-secondary m-b-30 text-left"
+                                           type="submit"
+                                           value="Submit">
+                                </div>
+                            </div>
+                        </form>
+                        {#<!-- Ajax response-->#}
+                        {#<div class="ajax-response text-center" id="contact-response"></div>#}
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section class="module-cover para-desktop text-center"
+                 style='height: 100%;background-image: url("{% static 'images/virtual_tour_1.jpg' %}");'>
+            <div class="container">
+                <div class="row">
+                    <div class="over-title-center">
+                        <a href="/virtual-tour/">
+                            <h3 class="m-b-20 over-title text-center" style="width: 8em;">
+                                Virtual Tour
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {#{% post_to_facebook object_or_url "Post to Facebook!" %}#}
+    </div>
+{% endblock content %}
+
+{% block guide_js %}
+    //<script type="text/javascript">
+    //     $(document).on("click", "#submit_guide", function () {
+    //         $.fileDownload(.done(function () {
+    //             //redirect
+    //             console.log('initilized?');
+    //             window.location = '/guide-questionary-success/';})
+    //         });
+    //     });
+    //</script>
+
+    //<script type="text/javascript">
+    //     $("#submit_guide").click(
+    //         console.log('clicked?');
+    //        function(e) {
+    //            e.preventDefault();
+    //            //open download link in new page
+    //            window.open( $(this).attr("input") );
+    //            //redirect current page to success page
+    //            window.location="/guide-questionary-success/";
+    //            console.log('did it redirect?');
+    //            window.focus();
+    //        }
+    //    );
+    //</script>
+
+    <script>
+        let form_sub_flag = true;
+
+        $('#subscribe').submit(function(e){
+            if (form_sub_flag) {
+                e.preventDefault();
+                var first_name = $("#id_first_name").val();
+                var last_name = $("#id_last_name").val();
+                var email_id = $("#id_email").val();
+                var do_receive_nsl = $("#id_agree_to_receive_other_communications").val();
+                console.log(email_id)
+                console.log(do_receive_nsl)
+                //if(email_id && do_receive_nsl==true){
+                if (email_id && do_receive_nsl) {
+                    var csrfmiddlewaretoken = csrftoken;
+                    var email_data = {
+                        "email_id": email_id,
+                        "first_name": first_name,
+                        "last_name": last_name,
+                        "csrfmiddlewaretoken" : csrfmiddlewaretoken
+                    };
+                    $.ajax({
+                        type : 'POST',
+                        url :  '/subscribe/',
+                        data : email_data,
+                        async: false,
+                        success : function(response){
+                        //    //$('#id_email').val('');
+                        //    if(response.status == "404"){
+                        //      alert("This Email is already been subscribed!");
+                        //    }
+                        //    else{
+                              alert("Thank you for filling in the form! Please Check your Emails");
+                        //    }
+                        //},
+                        //error: function(response) {
+                        //    alert("Sorry Something went Wrong");
+                        //    //$('#id_email').val('');
+                        }
+                    });
+
+                    form_sub_flag = false;
+                    $(this).submit();
+                    form_sub_flag = true;
+                    return false;
+                } else {
+                    alert("Please provide correct email!");
+                }
+            }
+        });
+
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+        function csrfSafeMethod(method) {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        })
+    </script>
+{% endblock guide_js %}

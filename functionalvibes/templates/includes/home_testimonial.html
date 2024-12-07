@@ -1,0 +1,36 @@
+{% load sekizai_tags static %}
+
+<div class="modal fade modal-md"
+     id="modal-{{ item.id }}"
+     style="color: #0b0b0b; z-index: 999999"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ModalLabel"
+     aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title">{{ item.title }}</h5>
+
+           </div>
+           <div class="modal-body">
+               {% if item.photo %}
+                    <img src="{{ item.photo.url }}"
+                         style="padding-right: 10px; float:left;width:40%"
+                         alt="Testimonial image">
+               {% endif %}
+               <span style="font-size: 20px">{{item.reviewer}}</span><br/>
+{#               <span style="font-size: 20px">"</span>#}
+{#               <h6 style="font-size: 17px">{{ item.subtitle }}</h6>#}
+{#               <span style="font-size: 20px">"</span>#}
+               <p style="font-size: 16px">{{ item.description|safe }}</p>
+           </div>
+
+           <button class="btn btn-sm pull-right" type="button"
+                   data-dismiss="modal" aria-label="Close">
+               Close
+           </button>
+       </div>
+   </div>
+</div>
+
