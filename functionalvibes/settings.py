@@ -366,25 +366,25 @@ LOGGING = {
 }
 
 # Contact Form specific
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_HOST = 'mail.functionalvibes.com'
-EMAIL_HOST = 'rlinux28.grserver.gr'
-DEFAULT_FROM_EMAIL = 'webmaster@functionalvibes.com'
-EMAIL_HOST_USER = 'webmaster@functionalvibes.com'
-EMAIL_RECEIVER = 'info@functionalvibes.com'
-TEMP_EMAIL_RECEIVER = 'info@functionalvibes.com'
-EMAIL_HOST_PASSWORD = '7wh7~D2l'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_RECEIVER = env('EMAIL_RECEIVER')
+TEMP_EMAIL_RECEIVER = env('TEMP_EMAIL_RECEIVER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
-# EMAIL_PORT = 465
-EMAIL_PORT = 587
+EMAIL_PORT = env('EMAIL_PORT')
 
-NORECAPTCHA_SITE_KEY = '6Le5g9QZAAAAABKK7BAsgBZX2flGXMU15TisD4kz'
-NORECAPTCHA_SECRET_KEY = '6Le5g9QZAAAAAG9nMicWPXMvjMqoUxUG62pg0vZY'
+NORECAPTCHA_SITE_KEY = env('NORECAPTCHA_SITE_KEY')
+NORECAPTCHA_SECRET_KEY = env('NORECAPTCHA_SECRET_KEY')
 
 # Mailchimp
-MAILCHIMP_API_KEY = 'ec2b44381c8e9a9cc64460ece6272049-us12'
-MAILCHIMP_SUBSCRIBE_LIST_ID = '4453e639ec'
+MAILCHIMP_API_KEY = env('MAILCHIMP_API_KEY')
+MAILCHIMP_SUBSCRIBE_LIST_ID = env('MAILCHIMP_SUBSCRIBE_LIST_ID')
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 

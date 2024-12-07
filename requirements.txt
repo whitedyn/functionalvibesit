@@ -1,4 +1,5 @@
-asgiref==3.2.10
+asgiref==3.8.1
+backports.zoneinfo==0.2.1
 beautifulsoup4==4.10.0
 bleach==6.1.0
 certifi==2021.5.30
@@ -24,7 +25,6 @@ django-polymorphic==3.0.0
 django-sekizai==2.0.0
 django-social-share==2.0.0
 django-social-widgets==0.4.0
-django-summernote==0.8.20.0
 django-sortedm2m==3.1.1
 django-summernote==0.8.20.0
 django-taggit==4.0.0
@@ -55,7 +55,8 @@ lxml==4.8.0
 mailchimp==2.0.10
 mysql-client==0.0.1
 mysqlclient==2.0.1
-Pillow==7.2.0
+packaging==24.2
+pillow==10.4.0
 pytz==2020.1
 requests==2.26.0
 six==1.15.0
@@ -63,6 +64,7 @@ sorl-thumbnail==12.8.0
 soupsieve==2.2.1
 South==1.0.2
 sqlparse==0.3.1
+typing_extensions==4.12.2
 tzlocal==2.1
 Unidecode==1.1.1
 urllib3==1.26.6
