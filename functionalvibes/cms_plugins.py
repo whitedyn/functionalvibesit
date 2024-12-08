@@ -7,11 +7,11 @@ from cms.plugin_pool import plugin_pool
 from .models import Testimonial, Slide
 
 
-@plugin_pool.register_plugin  # register the plugin
+@plugin_pool.register_plugin   # register the plugin
 class TestimonialPlugin(CMSPluginBase):
     model = CMSPlugin  # model where plugin data are saved
     module = _("Testimonials")
-    name = _("Testimonials Carousel")  # name of the plugin in the interface
+    name = _("Testimonials Carousel")
     render_template = "plugins/testimonials_carousel_plugin.html"
 
     def render(self, context, instance, placeholder):

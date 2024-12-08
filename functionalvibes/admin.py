@@ -42,7 +42,7 @@ class TestimonialCategoriesAdmin(admin.ModelAdmin):
 
 
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('title', 'order', 'top_story', 'active', 'photo')
+    list_display = ('title', 'reviewer', 'order', 'top_story', 'active', 'photo')
     list_filter = ('top_story', 'active')
 
 
