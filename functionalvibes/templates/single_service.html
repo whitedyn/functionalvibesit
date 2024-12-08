@@ -12,11 +12,11 @@
     <!-- Facebook Opengraph -->
     <meta property="og:url" content="{% url 'single_service' slug=service.slug %}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Additional services - Functional Vibes" />
+    <meta property="og:title" content="Altri servizi - Functional Vibes" />
     <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
     {#<meta property="og:image" content="https://functionalvibes.com/static/images/virtual_tour_1.jpg" />#}
     <meta property="og:image" content="{{ service.photo.url }}" />
-    <meta property="og:image:alt" content="Additional services - Functional Vibes" />
+    <meta property="og:image:alt" content="Altri servizi - Functional Vibes" />
     <meta property="fb:app_id" content="3625437754143193"/>
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -31,7 +31,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb justify-content-left">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item"><a href="/services">Services</a></li>
+                            <li class="breadcrumb-item"><a href="/services">Servizi</a></li>
                             <li class="breadcrumb-item active">{{ service.title }}</li>
                         </ol>
                     </div>
@@ -64,7 +64,7 @@
 
                                     {% if service.slug == 'osteopathy' %}
                                         <a class="btn btn-square btn-outline-secondary pull-right m-b-30" href="/contact">
-                                            Book an appointment
+                                            Prenota un appuntamento
                                         </a>
                                     {% elif service.slug == 'corporate-wellness' %}
                                         <a class="btn btn-square btn-outline-secondary pull-right m-b-30" href="/contact">
