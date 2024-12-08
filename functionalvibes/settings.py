@@ -36,7 +36,8 @@ DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = [
     'http://138.197.191.220',
-    '138.197.191.220',
+    '138.197.191.220',  # en. subdomain
+    '46.101.100.88',  # it. subdomain
     '192.168.1.9',
     'functionalvibes',
     'functionalvibes.com',
