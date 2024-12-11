@@ -51,7 +51,7 @@ class Service(models.Model):
     slug = AutoSlugField(populate_from='title', editable=True, null=True, blank=True)
     order = models.IntegerField(blank=True, null=True)
     active = models.BooleanField(default=True)
-    subtitle = models.CharField(max_length=120, null=True, blank=True)
+    subtitle = models.CharField(max_length=220, null=True, blank=True)
     photo = models.ImageField(upload_to='images/services', null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     email = models.CharField(max_length=120, null=True, blank=True)
