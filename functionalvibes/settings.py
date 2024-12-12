@@ -40,6 +40,7 @@ ALLOWED_HOSTS = [
     '46.101.100.88',  # it. subdomain
     '192.168.1.9',
     'functionalvibes',
+    'it.functionalvibes.com',
     'functionalvibes.com',
     'www.functionalvibes.com',
     'localhost',
