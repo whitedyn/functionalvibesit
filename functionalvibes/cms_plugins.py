@@ -17,7 +17,7 @@ class TestimonialPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         testimonials = Testimonial.objects.filter(
             top_story=True, active=True, photo__isnull=False
-        )#[:4]
+        ).order_by("order")
         context.update({
             'instance': instance,
             'testimonials': testimonials,
