@@ -1,0 +1,176 @@
+{% extends 'base_front.html' %}
+{% load sekizai_tags static %}
+{% load social_share %}
+
+{% block content %}
+<head>
+    <title>
+        Virtual tour - Movimento Salute Performance
+    </title>
+
+    {% block facebook_opengraph %}
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content="https://functionalvibes.com/virtual-tour/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Virtual tour - Functional Vibes" />
+    <meta property="og:description" content="Functional Training sessions, Osteopathy, Nutritional Consultancy and Postural Assessment. A totally new concept of health consultancy, right in the heart of Brussels"/>
+    <meta property="og:image" content="https://functionalvibes.com/static/images/virtual_tour_1.jpg" />
+    {#<meta property="og:image" content="{{ service.photo.url }}" />#}
+    <meta property="og:image:alt" content="Virtual tour - Functional Vibes" />
+    <meta property="fb:app_id" content="3625437754143193"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {% endblock facebook_opengraph %}
+</head>
+    <section class="module-cover-slides fullscreen">
+        <ul class="slides-container">
+            <li class="parallax text-center"> {#data-overlay="0.5"#}
+                <img src="{% static 'images/virtual_tour_1.jpg' %}" alt="">
+
+                <div class="container" style="padding-top:500px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20 tour-slide">
+{#                                style="text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">#}
+                                Il posto ideale per concentrarti sui <strong>tuoi obbiettivi</strong>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="parallax">
+                <img src="{% static 'images/virtual_tour_2.jpg' %}" alt="">
+                <div class="container" style="padding-top:500px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {# tour-slide #}
+                            <h3 class="text-right m-b-20 virtual-desktop">
+                                Una grande e luminosissima sala per rendere i tuoi allenamenti piacevoli e sicuri
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="parallax text-left">
+                <img src="{% static 'images/virtual_tour_3.jpg' %}" alt="">
+                <div class="container" style="padding-top:500px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center m-b-20 virtual-desktop">
+                                Spogliatoi super-equipaggiati con specchi, asciugacapelli, gel doccia e
+                                prodotti per la cura del corpo
+                            </h3>
+                            {#<p class="m-b-40">#}
+                            {#    Some description for this slide#}
+                            {#</p>#}
+{#                            <p>#}
+{#                                <a class="btn btn-lg btn-circle btn-warning" href="#">#}
+{#                                    Get Started#}
+{#                                </a>#}
+{#                                <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">#}
+{#                                    Learn More#}
+{#                                </a>#}
+{#                            </p>#}
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="parallax text-left">
+{#                <img src="{% static 'images/virtual_tour_4.jpg' %}" alt="">#}
+                <img src="{% static 'images/virtual_tour138.jpg' %}" alt="">
+                <div class="container" style="padding-top:500px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-right m-b-20 virtual-desktop">
+                                Asciugamani puliti e profumati sempre a disposizione per coccolarti durante i tuoi allenamenti
+                            </h3>
+                            {#<p class="m-b-40">#}
+                            {#    Some description for this slide#}
+                            {#</p>#}
+{#                            <p>#}
+{#                                <a class="btn btn-lg btn-circle btn-warning" href="#">#}
+{#                                    Get Started#}
+{#                                </a>#}
+{#                                <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">#}
+{#                                    Learn More#}
+{#                                </a>#}
+{#                            </p>#}
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="parallax text-left">
+                <img src="{% static 'images/virtual_tour_5.jpg' %}" alt="">
+                <div class="container" style="padding-top:500px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-left m-b-20 virtual-desktop">
+                                Una sala d'attesa spaziosa e confortevole, per fare due chiacchiere gustando un caffè,
+                                dare un'occhiata alle tue mail grazie alla nostra wi-fi super
+                                veloce o semplicemente rilassarti un po'
+                            </h3>
+                            {#<p class="m-b-40">#}
+                            {#    Some description for this slide#}
+                            {#</p>#}
+{#                            <p>#}
+{#                                <a class="btn btn-lg btn-circle btn-warning" href="#">#}
+{#                                    Get Started#}
+{#                                </a>#}
+{#                                <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">#}
+{#                                    Learn More#}
+{#                                </a>#}
+{#                            </p>#}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="slides-navigation">
+            <a class="prev" href="#">
+                <span class="ti-angle-left"></span>
+            </a>
+            <a class="next" href="#">
+                <span class="ti-angle-right"></span>
+            </a>
+        </div>
+    </section>
+
+    <section style="padding-top:100px">
+        <div class="service-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="team-item">
+                        <div class="img-container">
+                            <a href="/contact">
+                                <img src="{% static 'images/get_in_touch.jpg' %}" alt="">
+                                <div class="container">
+                                    <div class="overly">
+                                        <h2 class="m-b-20 text-center"
+                                            style="font-size: 40px;margin-top:180px;color:#ffffff!important;text-shadow: 0 0 3px #000;-moz-text-shadow: 0 0 2px #000;-webkit-text-shadow: 0 0 2px #000;">
+                                            Get in touch
+                                        </h2>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="col text-center" style="padding-top:15vh;">
+                        <a href="/contact"
+                           class="btn btn-square btn-outline-secondary m-b-20">
+                            Book a free tour
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
