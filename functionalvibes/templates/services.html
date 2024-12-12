@@ -63,7 +63,8 @@
                             {#            {% if service.email %}e-mail: {{service.email}}{% endif %}#}
                                     </p>
                                 </div>
-                            {% elif service.slug == 'fisioterapia' %}
+                            {% endif %}
+                            {% if service.slug == 'fisioterapia' %}
                                 <div class="pricing-body">
                                     <p class="lead m-b-30" style="font-size:18px">
                                         La rieducazione funzionale, di cui siamo esperti e convinti sostenitori,
