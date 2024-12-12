@@ -63,6 +63,14 @@
                             {#            {% if service.email %}e-mail: {{service.email}}{% endif %}#}
                                     </p>
                                 </div>
+                            {% elif service.slug == 'fisioterapia' %}
+                                <div class="pricing-body">
+                                    <p class="lead m-b-30" style="font-size:18px">
+                                        La rieducazione funzionale, di cui siamo esperti e convinti sostenitori,
+                                        a volte può non bastare...<br>
+                            {#            {% if service.email %}e-mail: {{service.email}}{% endif %}#}
+                                    </p>
+                                </div>
                             {% endif %}
 
 
@@ -78,6 +86,14 @@
                                 {#{% elif service.slug == 'corporate-wellness' %}#}
                                 {% endif %}
                                 {% if service.slug == 'osteopathy' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30" href="/contact">
+                                        Prenota un appuntamento
+                                    </a>
+                                {% elif service.slug == 'fisioterapia' %}
+                                    <a class="btn btn-square btn-outline-secondary m-b-30"
+                                       href="{% url 'single_service' slug=service.slug %}">
+                                        Scopri di più
+                                    </a>
                                     <a class="btn btn-square btn-outline-secondary m-b-30" href="/contact">
                                         Prenota un appuntamento
                                     </a>
