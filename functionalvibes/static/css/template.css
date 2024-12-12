@@ -15533,7 +15533,7 @@ form[action*='createsend.com'] * {
     opacity: 0;
 }
 input[type], textarea, select {
-    -webkit-appearance: none;
+    -webkit-appearance: checkbox;
     background: #ffffff;
     padding: 0.8125em;
     border-radius: 1px;
