@@ -15384,7 +15384,8 @@ body.off-canvas-sidebar-open:after {
 
 @media (min-width: 320px) {
     .logo-xs {
-        width: 210px!important;
+        /*width: 210px!important;*/
+        width: 120px!important;
     }
 }
 
