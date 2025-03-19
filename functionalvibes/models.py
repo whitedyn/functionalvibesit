@@ -327,7 +327,7 @@ class Post(models.Model):
         if self.photo:
             return self.photo.url
         else:
-            return "/media/images/logo.webp"
+            return "/media/images/FV_Logo.png"
 
     def get_absolute_url(self):
         kwargs = {
